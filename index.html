@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" href="img/logoverisinfondo.png" type="image/png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YRQPL88QHC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YRQPL88QHC');
+</script>
+
+
+    <!-- Meta etiquetas de configuración para VerifiOS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VerifiOS | Desarrollo de Software y Ecosistemas Digitales en Ecuador</title>
+    <meta name="description" content="Desarrollo de software a la medida, sistemas POS, catálogos digitales y landing pages en Cuenca con servicio para todo el Ecuador. Cero cobros mensuales obligatorios.">
+
+    <!-- Etiquetas para compartir en WhatsApp/Redes Sociales -->
+    <link rel="canonical" href="https://verifios.verificarecuador.com/">
+    <meta property="og:title" content="VerifiOS | Software y Soluciones Digitales a la Medida">
+    <meta property="og:description" content="Creamos plataformas digitales, catálogos y sistemas POS profesionales. Desarrollo local en Cuenca con cobertura en todo el Ecuador.">
+    <meta property="og:image" content="https://verifios.verificarecuador.com/img/logoverisinfondo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://verifios.verificarecuador.com/">
+    <style>
+        :root {
+            --bg: #090d16;
+            --card-bg: #111827;
+            --border: #1f2937;
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --text: #f3f4f6;
+            --text-muted: #9ca3af;
+            --success: #10b981;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; border-bottom: 1px solid var(--border); background: rgba(9, 13, 22, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 10; }
+        .logo { font-weight: 800; font-size: 1.2rem; color: #fff; display: flex; align-items: center; gap: 8px; }
+        
+        .hero { text-align: center; padding: 5rem 1.5rem 3rem; max-width: 900px; margin: 0 auto; }
+        .hero h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.2; margin-bottom: 1.5rem; background: linear-gradient(to right, #fff, var(--text-muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem; }
+        
+        .hero-img-container { max-width: 700px; margin: 2rem auto 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .hero-img-container img { width: 100%; display: block; }
+
+        .btn-glow { background: var(--accent); color: white; padding: 1rem 2.5rem; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1rem; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 0 25px rgba(99, 102, 241, 0.4); transition: all 0.2s ease; }
+        .btn-glow:hover { background: var(--accent-hover); box-shadow: 0 0 35px rgba(99, 102, 241, 0.7); transform: translateY(-2px); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+        
+        .grid-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 2.5rem; border-radius: 16px; text-align: center; transition: border-color 0.2s; }
+        .card:hover { border-color: var(--accent); }
+        .card-emoji { font-size: 3rem; margin-bottom: 1rem; display: block; }
+        .card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: #fff; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .price-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; position: relative; display: flex; flex-direction: column; justify-content: space-between; }
+        .price-card.pro { border-color: var(--accent); background: linear-gradient(180deg, rgba(99, 102, 241, 0.05) 0%, var(--card-bg) 100%); }
+        .price-card.pro::after { content: "🔥 MÁS VENDIDO"; position: absolute; top: -12px; right: 24px; background: var(--accent); color: white; font-size: 0.7rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 6px; }
+        
+        .price-amount { font-size: 2.5rem; font-weight: 900; color: #fff; margin: 1.5rem 0; }
+        .price-card ul { list-style: none; margin-bottom: 2rem; }
+        .price-card ul li { margin-bottom: 0.75rem; color: var(--text-muted); font-size: 0.95rem; display: flex; align-items: center; gap: 10px; }
+        
+        .btn-card { background: transparent; border: 1px solid var(--border); color: #fff; text-align: center; padding: 0.75rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: block; transition: all 0.2s; }
+        .price-card.pro .btn-card { background: var(--accent); border-color: var(--accent); }
+        .btn-card:hover { background: var(--border); }
+        .price-card.pro .btn-card:hover { background: var(--accent-hover); }
+
+      /* Estilos centrados y desplegables para el FAQ (Acordeón) */
+.faq-container { max-width: 800px; margin: 5rem auto 0; padding: 0 1.5rem; text-align: center; }
+.faq-title { margin-bottom: 2.5rem; }
+.faq-title h2 { font-size: 2.2rem; font-weight: 900; color: #fff; margin-bottom: 0.5rem; }
+.faq-title p { color: var(--text-muted); }
+
+.faq-grid { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+.faq-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.2s; }
+.faq-item:hover { border-color: var(--accent); }
+
+.faq-question { width: 100%; background: none; border: none; color: #fff; font-size: 1.05rem; font-weight: 600; padding: 1.25rem 1.5rem; text-align: left; display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 10px; }
+.faq-question .faq-icon { font-size: 1.2rem; font-weight: bold; transition: transform 0.3s ease; color: var(--accent); }
+
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 1.5rem; color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+
+/* Estado activo del acordeón */
+.faq-item.active .faq-answer { max-height: 200px; padding: 0 1.5rem 1.25rem 1.5rem; }
+.faq-item.active .faq-question .faq-icon { transform: rotate(45deg); }
+
+        footer { text-align: center; padding: 3rem; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+    
+       .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 52px;       /* Ancho exacto */
+    height: 52px;      /* Alto exacto */
+    background-color: #25d366; /* El verdecito clásico de WhatsApp */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    z-index: 9998;     /* Un número menos que el cotizador para que no peleen */
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.05);
+}
+
+        .btn-whatsapp-nav {
+            background-color: #25d366;
+            color: #ffffff;
+            padding: 0.4rem 0.9rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-whatsapp-nav:hover {
+            background-color: #20ba5a;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+    /* El contenedor principal reparte el logo a la izquierda y la hamburguesa a la derecha */
+    .navbar-sticky {
+        justify-content: space-between !important;
+    }
+
+    #btnHamburguesa {
+        display: block !important;
+    }
+
+    #navLinks {
+        display: none !important;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.98);
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        align-items: flex-start !important;
+        gap: 1rem !important;
+    }
+
+    #navLinks.active {
+        display: flex !important;
+    }
+}
+@keyframes ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+/* Estilos globales y animaciones para el Hero */
+.hero-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.gradient-glow-text {
+    background: linear-gradient(135deg, #60a5fa 0%, #34d399 50%, #a855f7 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shineText 5s linear infinite;
+    display: inline-block;
+}
+
+@keyframes shineText {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes ping {
+    75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+/* Ajuste responsivo para celulares */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem !important;
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+
+
+<!-- NAVEGACIÓN FIJA CON MENÚ HAMBURGUESA A LA DERECHA -->
+<nav class="navbar-sticky" style="position: fixed; top: 0; left: 0; width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 1000; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; transition: transform 0.3s ease-in-out;">
+    
+    <!-- LOGO A LA IZQUIERDA -->
+    <a href="#" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+        <span style="font-weight: 900; font-size: 1.3rem; color: #fff; letter-spacing: -0.5px;">⚡ VerifiOS 🌐</span>
+    </a>
+
+    <!-- Botón Hamburguesa -->
+    <button onclick="toggleMenuMobile()" id="btnHamburguesa" style="display: none; background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; outline: none; padding: 0;">
+        ☰
+    </button>
+
+    <!-- Enlaces de navegación -->
+    <div id="navLinks" style="display: flex; gap: 1.5rem; align-items: center;">
+        <a href="#cotizador-section" onclick="cerrarMenuMobile()" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600;">🧮 Cotizador</a>
+        <a href="#modulos-section" onclick="cerrarMenuMobile()" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600;">⚙️ Ecosistema</a>
+        <a href="#precios-section" onclick="cerrarMenuMobile()" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600;">💰 Precios</a>
+        <a href="index2.html" onclick="cerrarMenuMobile()" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 700;">🛠️ Utilidades</a>
+        <a href="#faq-section" onclick="cerrarMenuMobile()" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600;">❓ FAQ</a>
+        
+        <a href="https://wa.me/593992661432?text=Hola,%20vengo%20de%20la%20web%20de%20VerifiOS%20y%20quiero%20información" target="_blank" onclick="cerrarMenuMobile()" style="background: var(--accent); color: #fff; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; text-decoration: none; font-weight: 700;">
+            WhatsApp 📲
+        </a>
+    </div>
+</nav>
+
+<!-- Espaciador -->
+<div style="height: 70px;"></div>
+
+<!-- CONTENEDOR CENTRADO PARA CELULAR Y PC -->
+<div style="width: 100%; display: flex; justify-content: center; margin-bottom: 1.5rem;">
+    
+    <!-- WIDGET DE ESTADO EN VIVO -->
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(52, 211, 153, 0.3); padding: 8px 16px; border-radius: 9999px; backdrop-filter: blur(10px); max-width: 90%; box-sizing: border-box;">
+        
+        <!-- Punto parpadeante -->
+        <span style="position: relative; display: flex; width: 10px; height: 10px; flex-shrink: 0;">
+          <span style="position: absolute; animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite; display: inline-flex; width: 100%; height: 100%; border-radius: 50%; background: #34d399; opacity: 0.75;"></span>
+          <span style="position: relative; display: inline-flex; width: 10px; height: 10px; border-radius: 50%; background: #10b981;"></span>
+        </span>
+        
+        <!-- Texto de estado -->
+        <span style="font-size: 0.78rem; color: #e2e8f0; font-weight: 500; text-align: center;">
+            VerifiOS: <strong style="color: #34d399;">Operativo &bull; Cuenca, EC</strong>
+        </span>
+    </div>
+
+</div>
+
+<!-- SECCIÓN PRINCIPAL (HERO) CON TODO EL PODOT Y DISEÑO AVANZADO -->
+<header class="hero" style="text-align: center; padding: 4rem 1rem 2rem 1rem;">
+    
+    <!-- 1. TÍTULO PRINCIPAL CON EFECTO DEGRADADO Y BRILLO ANIMADO -->
+    <h1 class="hero-title">
+        <span class="gradient-glow-text">
+            El Ecosistema Digital y de Software para tu Negocio
+        </span>
+    </h1>
+
+ <!-- 2. CONTENEDOR DEL LOGO GRANDE -->
+    <div style="margin-bottom: 2rem;">
+        <img src="img/logoverisinfondo.png" alt="Logo VerifiOS" style="max-width: 280px; width: 100%; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.4));">
+    </div>
+
+    <p style="color: #94a3b8; font-size: 1.05rem; max-width: 650px; margin: 0 auto 2rem auto; line-height: 1.6;">
+        No usamos plantillas lentas de WordPress; desarrollamos software a la medida que ya factura y opera en el mercado ecuatoriano.
+    </p>
+    
+    <div class="hero-img-container">
+        <img src="tu-imagen.jpg" alt="Ejemplo de plataforma profesional" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'">
+    </div>
+
+    <a href="https://wa.me/593992661432?text=Hola,%20vengo%20de%20la%20web%20de%20VerifiOS%20y%20quiero%20empezar%20mi%20proyecto%20ahora mismo" class="btn-glow" target="_blank" style="display: inline-block; padding: 14px 28px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff; font-weight: bold; border-radius: 12px; text-decoration: none; box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4); transition: transform 0.2s;">🎯 Empezar mi Proyecto Ahora</a>
+    
+    <!-- 4. INSIGNIA DE UBICACIÓN LOCAL -->
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.3); padding: 8px 16px; border-radius: 30px; margin-top: 2rem;">
+        <span style="font-size: 1rem;">📍</span>
+        <span style="color: #34d399; font-size: 0.9rem; font-weight: 600;">Desarrollo local en Cuenca 🇪🇨 • Soluciones digitales y soporte para todo el Ecuador</span>
+    </div>
+</header>
+<!-- SECCIÓN: VISOR GRÁFICO Y COTIZADOR INTELIGENTE -->
+<div id="cotizador-section" style="max-width: 850px; margin: 4rem auto; padding: 2.5rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; text-align: center;">
+    <h2 style="font-size: 2.2rem; font-weight: 900; color: #fff; margin-bottom: 0.5rem;">🧮 Diseña y Cotiza tu Proyecto</h2>
+    <p style="color: var(--text-muted); margin-bottom: 2rem;">Escribe tu idea de negocio o selecciona las opciones y observa la maqueta actualizarse en vivo.</p>
+
+    <!-- VISOR GRÁFICO EN TIEMPO REAL (Wireframe Interactivo) -->
+    <div style="background: #0b0f19; border: 1px solid rgba(96, 165, 250, 0.3); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5); margin-bottom: 2.5rem; text-align: left;">
+        <!-- Barra superior del visor estilo ventana -->
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: rgba(15, 23, 42, 0.9); border-bottom: 1px solid rgba(255,255,255,0.06);">
+            <div style="display: flex; gap: 6px;">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></div>
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b;"></div>
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></div>
+            </div>
+            <span id="visorTituloBarra" style="font-size: 0.7rem; color: #60a5fa; font-family: monospace;">landing-page.preview</span>
+        </div>
+
+        <!-- Contenido dinámico del visor -->
+        <div id="visorContenido" style="padding: 30px 20px; background: #05070c; min-height: 160px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-top: 3px solid var(--accent); transition: all 0.3s ease;">
+            <div id="visorIcono" style="width: 42px; height: 42px; background: rgba(99, 102, 241, 0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; color: var(--accent); font-size: 1.2rem;">🌐</div>
+            <h4 id="visorNombrePreview" style="color: #fff; font-size: 1.1rem; margin: 0 0 6px 0;">Mi Sitio Web Profesional</h4>
+            <p id="visorTextoPreview" style="color: var(--text-muted); font-size: 0.8rem; margin: 0; line-height: 1.3;">Diseño limpio y adaptable para posicionar tu marca personal o negocio.</p>
+        </div>
+    </div>
+
+    <!-- CAJA DE TEXTO INTELIGENTE -->
+    <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(0,0,0,0.3) 100%); padding: 1.5rem; border-radius: 12px; border: 1px dashed var(--accent); margin-bottom: 2rem; text-align: left;">
+        <label style="color: #fff; font-weight: 700; display: block; margin-bottom: 0.4rem; font-size: 1.05rem;">
+            💡 ¿No sabes qué elegir? Escribe tu idea aquí:
+        </label>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.75rem;">
+            Ejemplo: <i>"Quiero un sistema para mi picantería donde la gente pida comida"</i> o <i>"Tengo una ferretería con muchos productos"</i>. El cotizador detectará lo que necesitas.
+        </p>
+        
+        <textarea id="ideaLibre" placeholder="" oninput="analizarIdeaYCotizar()" style="width: 100%; height: 90px; padding: 0.75rem; border-radius: 8px; background: var(--bg); color: #fff; border: 1px solid var(--border); font-size: 0.95rem; resize: vertical; outline: none;"></textarea>
+        
+        <!-- Alerta visual de lo que detectó el sistema -->
+        <div id="aiFeedback" style="margin-top: 10px; font-size: 0.85rem; color: var(--accent); font-weight: 600; display: none;">
+            ✨ Analizado: <span id="aiTextSuggestion" style="color: #fff;">Detectando requerimiento...</span>
+        </div>
+    </div>
+
+    <div style="text-align: left; display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2.5rem;">
+        
+        <!-- 1. Tipo de Proyecto -->
+        <div style="background: rgba(0,0,0,0.2); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--border);">
+            <label style="color: #fff; font-weight: 600; display: block; margin-bottom: 0.5rem;">1. Tipo de plataforma (Se ajusta solo o puedes cambiarlo):</label>
+            <select id="tipoProyecto" onchange="analizarIdeaYCotizar()" style="width: 100%; padding: 0.85rem; border-radius: 8px; background: var(--bg); color: #fff; border: 1px solid var(--border); font-size: 1rem; outline: none;">
+                <option value="45">Landing Page / Web Profesional ($45)</option>
+                <option value="85">Catálogo Digital de Productos ($85)</option>
+                <option value="130">Sistema POS / Restaurantes / Web App Completa ($130)</option>
+            </select>
+        </div>
+
+        <!-- 2. Cantidad de Productos o Páginas (Slider interactivo) -->
+        <div style="background: rgba(0,0,0,0.2); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--border);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <label style="color: #fff; font-weight: 600;">2. Cantidad estimada de productos o secciones:</label>
+                <span id="labelSlider" style="color: var(--accent); font-weight: 800; font-size: 1.1rem;">Hasta 20 ítems</span>
+            </div>
+            <input type="range" id="rangoItems" min="0" max="100" step="10" value="20" oninput="actualizarSlider(); calcularPrecioPro();" style="width: 100%; accent-color: var(--accent); cursor: pointer;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 5px;">
+                <span>Básico</span>
+                <span>Mediano</span>
+                <span>Avanzado (+100)</span>
+            </div>
+        </div>
+
+        <!-- 3. Extras Adicionales -->
+        <div style="background: rgba(0,0,0,0.2); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--border);">
+            <label style="color: #fff; font-weight: 600; display: block; margin-bottom: 0.75rem;">3. Complementos opcionales:</label>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-muted); font-size: 0.95rem;">
+                    <input type="checkbox" id="extraDominio" value="15" onchange="calcularPrecioPro()" style="width: 18px; height: 18px; accent-color: var(--accent);">
+                    Asesoría y configuración de Dominio Pro (.com / .ec) <span style="color: var(--accent); font-weight: 700;">(+$15)</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-muted); font-size: 0.95rem;">
+                    <input type="checkbox" id="extraBot" value="25" onchange="calcularPrecioPro()" style="width: 18px; height: 18px; accent-color: var(--accent);">
+                    Automatización avanzada de pedidos a WhatsApp Business <span style="color: var(--accent); font-weight: 700;">(+$25)</span>
+                </label>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Resultado y Botón Dinámico -->
+    <div style="border-top: 1px solid var(--border); padding-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+        <div>
+            <span style="color: var(--text-muted); font-size: 1rem;">Inversión Estimada Total:</span>
+            <div id="totalPrecioPro" style="font-size: 3rem; font-weight: 900; color: #fff;">$45</div>
+            <span style="font-size: 0.8rem; color: var(--success); display: block; margin-top: 2px;">⚡ Cero cobros mensuales obligatorios por mantenimiento</span>
+        </div>
+        
+        <a id="whatsappBtnPro" href="#" target="_blank" class="btn-glow" style="width: 100%; justify-content: center; max-width: 420px; margin-top: 1rem;">
+            📲 Enviar cotización exacta a WhatsApp
+        </a>
+    </div>
+</div>
+
+<!-- SECCIÓN: CONDICIONES Y REGLAS CLARAS (Desplegable / Pestaña) -->
+<div style="max-width: 850px; margin: 2rem auto; background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 12px; text-align: left; overflow: hidden;">
+    <details style="padding: 1.25rem 2rem; cursor: pointer;">
+        <summary style="color: #fff; font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 8px; outline: none; user-select: none;">
+            📜 <span style="color: var(--accent);">¿Qué incluye y cuáles son las condiciones del servicio?</span> <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal; margin-left: auto;">(Click para ver)</span>
+        </summary>
+        
+        <ul style="color: var(--text-muted); font-size: 0.85rem; display: flex; flex-direction: column; gap: 0.8rem; padding-left: 20px; line-height: 1.5; margin-top: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.25rem;">
+            <li style="text-align: justify;">
+                <strong style="color: #fff;">🤝 Metodología de Pago y Confianza (50/50):</strong> Cero pagos a ciegas. Primero te mostramos el producto funcionando o una demo adaptada a tu negocio. Si te convence y lo quieres a tu medida, arrancas con el <span style="color: #fff;">50% de anticipo</span> y el <span style="color: #fff;">50% restante lopagas únicamente al entregar</span> y dejar operativo el sistema.
+            </li>
+            <li style="text-align: justify;">
+                <strong style="color: #fff;">🌐 Dominio y Hosting:</strong> El precio base incluye la asesoría y configuración inicial completa. Sin embargo, el registro oficial del dominio y su <span style="color: #fff;">renovación anual</span> quedan a nombre y absoluta responsabilidad del cliente.
+            </li>
+            <li style="text-align: justify;">
+                <strong style="color: #fff;">✍️ Revisiones y Cambios:</strong> El costo del proyecto incluye hasta <span style="color: #fff;">2 rondas de ajustes estéticos</span> menores sobre la estructura aprobada inicialmente. Solicitudes de cambios estructurales profundos o funciones nuevas no cotizadas se cobraran por separado.
+            </li>
+            <li style="text-align: justify;">
+                <strong style="color: #fff;">📂 Contenido e Información:</strong> El cliente se compromete a proveer los textos, logotipos, accesos e imágenes necesarias en los plazos acordados para evitar retrasos en el despliegue del sistema.
+            </li>
+            <li style="text-align: justify;">
+                <strong style="color: #fff;">🛠️ Mantenimiento:</strong> Cero cobros mensuales obligatorios por uso de plataforma (no usamos plantillas lentas de WordPress, es software propio que ya opera en el mercado). Entregamos el sitio o sistema funcionando al 100%. Soporte técnico extra o modificaciones posteriores se cotizan por hora o mediante paquetes de mantenimiento.
+            </li>
+        </ul>
+    </details>
+</div>
+
+<div class="container">
+    <div class="grid-features">
+        <div class="card">
+            <span class="card-emoji">🎯</span>
+            <h3>Primero Pruebas, Luego Pagas</h3>
+            <p>Cero pagos a ciegas. Te mostramos una demo en vivo o adaptada a tu negocio antes de arrancar con el modelo 50/50 y entrega final.</p>
+        </div>
+        <div class="card">
+            <span class="card-emoji">⚡</span>
+            <h3>Cero Mensualidades Abusivas</h3>
+            <p>Olvídate de alquileres de plataformas o plantillas lentas de WordPress. Es software propio, rápido y optimizado para operar en Ecuador.</p>
+        </div>
+        <div class="card">
+            <span class="card-emoji">🤝</span>
+            <h3>Desarrollo Directo y Humano</h3>
+            <p>Hablas directo con quien programa el ecosistema. Sin intermediarios, sin comisiones ocultas y con control total bajo tu propio dominio.</p>
+        </div>
+    </div>
+</div>
+
+    <!-- SECCIÓN: GARANTÍA DE CÓDIGO Y ENTREGA -->
+    <div style="margin: 4rem 0; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 2.5rem;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h2 style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">🛡️ Garantía de Código y Entrega VerifiOS</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Desarrollo profesional transparente y pensado para negocios que exigen resultados reales.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; text-align: left;">
+            <div style="background: rgba(0,0,0,0.2); padding: 1.25rem; border-radius: 12px; border-left: 3px solid var(--accent);">
+                <h4 style="color: #fff; margin-bottom: 0.4rem; font-size: 1rem;">🎯 Primero Pruebas, Luego Pagas</h4>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Cero riesgos. Te mostramos una demo en vivo antes de arrancar con el modelo 50/50: pagas la mitad al inicio y la otra mitad solo al entregar operativo.</p>
+            </div>
+            <div style="background: rgba(0,0,0,0.2); padding: 1.25rem; border-radius: 12px; border-left: 3px solid var(--accent);">
+                <h4 style="color: #fff; margin-bottom: 0.4rem; font-size: 1rem;">🚫 Cero Mensualidades Abusivas</h4>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Olvídate de alquileres fantasma o plantillas lentas de WordPress. Desarrollamos software propio, rápido y optimizado para el mercado local.</p>
+            </div>
+            <div style="background: rgba(0,0,0,0.2); padding: 1.25rem; border-radius: 12px; border-left: 3px solid var(--accent);">
+                <h4 style="color: #fff; margin-bottom: 0.4rem; font-size: 1rem;">🤝 Trato 100% Directo</h4>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Comunicación fluida y sin intermediarios molestos directamente con quien programa y estructura tu ecosistema.</p>
+            </div>
+        </div>
+    </div>
+
+  <div id="precios-section" class="pricing-grid">
+    <!-- Plan Base ($45) -->
+    <div class="price-card">
+        <div>
+            <h3>🌐 Landing Page / Web Profesional</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 5px;">Ideal para profesionales y marcas personales.</p>
+            <div class="price-amount">$45</div>
+            <ul>
+                <li>✅ 1 Interfaz optimizada para móviles</li>
+                <li>✅ Botón de WhatsApp flotante</li>
+                <li>✅ Despliegue en la nube con HTTPS y dominio</li>
+                <li>✅ Entrega funcional en pocos días</li>
+            </ul>
+            <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 12px; font-style: italic; border-top: 1px solid rgba(255,255,255,0.05); pt-2;">* No incluye catálogos masivos de productos ni bases de datos transaccionales complejas.</p>
+        </div>
+        <a href="https://wa.me/593992661432?text=Hola,%20estoy%20interesado%20en%20el%20plan%20Landing%20Page%20de%20$45" class="btn-card" target="_blank">📲 Elegir este plan</a>
+    </div>
+
+    <!-- Plan Intermedio ($85) -->
+    <div class="price-card pro">
+        <div>
+            <h3>📦 Catálogo Digital / Sistema Pro</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 5px;">Pensado para comercios y tiendas con stock.</p>
+            <div class="price-amount">$85</div>
+            <ul>
+                <li>✅ Sistema de productos y secciones (hasta 25 ítems)</li>
+                <li>✅ Control básico de inventario local</li>
+                <li>✅ Diseño responsive ultrarrápido</li>
+                <li>✅ Conexión directa a pedidos por WhatsApp</li>
+            </ul>
+            <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 12px; font-style: italic; border-top: 1px solid rgba(255,255,255,0.05); pt-2;">* No incluye pasarelas de pago con tarjeta automatizadas ni módulos contables con el SRI.</p>
+        </div>
+        <a href="https://wa.me/593992661432?text=Hola,%20estoy%20interesado%20en%20el%20plan%20Pro%20de%20$85" class="btn-card" target="_blank">⭐ Elegir Plan Pro</a>
+    </div>
+
+    <!-- Plan Avanzado ($130) -->
+    <div class="price-card">
+        <div>
+            <h3>⚡ POS / Restaurantes / Web App</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 5px;">Solución robusta para negocios en marcha.</p>
+            <div class="price-amount">$130</div>
+            <ul>
+                <li>✅ Arquitectura completa a la medida</li>
+                <li>✅ Lógica de negocio y panel de administración</li>
+                <li>✅ Operación continua sin comisiones a terceros</li>
+                <li>✅ Soporte prioritario directo con el desarrollador</li>
+            </ul>
+            <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 12px; font-style: italic; border-top: 1px solid rgba(255,255,255,0.05); pt-2;">* Solución avanzada para requerimientos operativos específicos sin intermediarios.</p>
+        </div>
+        <a href="https://wa.me/593992661432?text=Hola,%20estoy%20interesado%20en%20el%20plan%20Avanzado%20de%20$130" class="btn-card" target="_blank">🚀 Elegir Plan Avanzado</a>
+    </div>
+
+<!-- Plan Adicional: Mantenimiento y Soporte General ($25/mes) -->
+    <div class="price-card" style="border: 1px dashed var(--accent); background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(0,0,0,0.2) 100%);">
+        <div>
+            <div style="display: inline-block; background: rgba(99, 102, 241, 0.2); color: var(--accent); font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px;">SERVICIO GENERAL</div>
+            <h3>🛠️ Soporte y Mantenimiento Web</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 5px;">Para tu sitio web actual.</p>
+            <div class="price-amount">$25<span style="font-size: 1rem; color: var(--text-muted); font-weight: normal;">/mes</span></div>
+            <ul>
+                <li>✅ <strong>100% Opcional:</strong> Sin ataduras obligatorias en tus sistemas principales.</li>
+                <li>✅ Monitoreo constante de estado y servidor</li>
+                <li>✅ Hasta 3 actualizaciones menores al mes (textos, menú, fotos)</li>
+                <li>✅ Soporte técnico directo y prioritario</li>
+            </ul>
+            <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 12px; font-style: italic; border-top: 1px solid rgba(255,255,255,0.05); pt-2;">* Exclusivo para arreglos menores. Nuevos módulos, rediseños o cambios complejos se cotizan por separado o por hora de desarrollo.</p>
+        </div>
+        <a href="https://wa.me/593992661432?text=Hola,%20estoy%20interesado%20en%20el%20Plan%20de%20Soporte%20y%20Mantenimiento%20Mensual%20de%20$25" class="btn-card" target="_blank" style="background: rgba(255,255,255,0.1); border: 1px solid var(--border);">📲 Contratar Mantenimiento</a>
+    </div>
+
+</div>
+
+
+<!-- Sección de Portafolio Profesional con Carrusel por Sistema -->
+<section style="padding: 4rem 1rem; max-width: 1100px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 2rem;">
+        <span style="background: rgba(96, 165, 250, 0.1); color: #60a5fa; font-size: 0.8rem; padding: 6px 12px; border-radius: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">🚀 Casos de Éxito</span>
+        <h2 style="font-size: 2rem; color: #fff; margin-top: 10px; margin-bottom: 8px;">Soluciones reales para cada sector</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 600px; margin: 0 auto;">Explora cómo adaptamos la tecnología a diferentes tipos de comercio local en Ecuador.</p>
+    </div>
+
+    <!-- Grid de Múltiples Negocios -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        
+        <!-- 1. Tienda de Ropa -->
+        <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="background: #0b0f19; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: rgba(15, 23, 42, 0.8);">
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <div style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></div>
+                            <div style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b;"></div>
+                            <div style="width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></div>
+                            <span style="font-size: 0.7rem; color: #64748b; margin-left: 6px; font-family: monospace;">tienda-ropa.app</span>
+                        </div>
+                        <span id="counter-1" style="font-size: 0.7rem; color: #60a5fa; font-family: monospace;">1 / 3</span>
+                    </div>
+                    
+                    <!-- Contenedor del Carrusel (Imagen Grande y Limpia) -->
+                    <div style="position: relative; background: #05070c; height: 280px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 8px;">
+                        <div class="carousel-slide-1" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"><img src="img/ropa1.png" alt="Vista 1" style="max-width: 100%; max-height: 100%; object-fit: contain;"></div>
+                        <div class="carousel-slide-1" style="width: 100%; height: 100%; display: none; align-items: center; justify-content: center;"><img src="img/ropa2.png" alt="Vista 2" style="max-width: 100%; max-height: 100%; object-fit: contain;"></div>
+                        <div class="carousel-slide-1" style="width: 100%; height: 100%; display: none; align-items: center; justify-content: center;"><img src="img/ropa3.png" alt="Vista 3" style="max-width: 100%; max-height: 100%; object-fit: contain;"></div>
+                        
+                        <!-- Botones de Navegación -->
+                        <button onclick="changeSlide(1, -1)" style="position: absolute; left: 8px; background: rgba(0,0,0,0.6); color: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">❮</button>
+                        <button onclick="changeSlide(1, 1)" style="position: absolute; right: 8px; background: rgba(0,0,0,0.6); color: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">❯</button>
+                    </div>
+                </div>
+
+                <div style="padding: 1.25rem;">
+                    <span style="color: #f472b6; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">✨ Moda y Retail</span>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-top: 5px; margin-bottom: 6px;">👗 Tienda de Ropa & Calzado</h3>
+                    <p style="color: var(--text-muted); font-size: 0.83rem; line-height: 1.4; margin-bottom: 12px;">Catálogo visual de prendas con tallas, colores y botón de compra directa a WhatsApp.</p>
+                    
+                    <div style="display: flex; gap: 6px; font-size: 0.7rem; color: #94a3b8;">
+                        <span style="background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px;">✓ Catálogo</span>
+                        <span style="background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px;">✓ Tallas</span>
+                        <span style="background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px;">✓ WhatsApp</span>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 0 1.25rem 1.25rem 1.25rem;">
+                <a href="https://wa.me/593992661432?text=Hola,%20me%20interesa%20un%20catálogo%20digital%20para%20mi%20tienda%20de%20ropa" target="_blank" style="display: block; text-align: center; background: rgba(244, 114, 182, 0.1); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.3); padding: 9px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; text-decoration: none;">Cotizar para Tienda 📲</a>
+            </div>
+        </div>
+
+        <!-- 2. Cuadre de Caja -->
+        <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="background: #0b0f19; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: rgba(15, 23, 42, 0.8);">
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <div style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></div>
+                            <div style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b;"></div>
+                            <div style="width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></div>
+                            <span style="font-size: 0.7rem; color: #64748b; margin-left: 6px; font-family: monospace;">cuadre-caja.pos</span>
+                        </div>
+                        <span id="counter-2" style="font-size: 0.7rem; color: #38bdf8; font-family: monospace;">1 / 3</span>
+                    </div>
+                    
+                    <!-- Contenedor del Carrusel -->
+                    <div style="position: relative; background: #05070c; height: 280px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 8px;">
+                        <div class="carousel-slide-2" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"><img src="img/comercial1.png" alt="Vista 1" style="max-width: 100%; max-height: 100%; object-fit: contain;"></div>
+                        <div class="carousel-slide-2" style="width: 100%; height: 100%; display: none; align-items: center; justify-content: center;"><img src="img/comercial2.png" alt="Vista 2" style="max-width: 100%; max-height: 100%; object-fit: contain;"></div>
+                        <div class="carousel-slide-2" style="width: 100%; height: 100%; display: none; align-items: center; justify-content: center;"><img src="img/comercial3.png" alt="Vista 3" style="max-width: 100%; max-height: 100%; object-fit: contain;"></div>
+                        
+                        <button onclick="changeSlide(2, -1)" style="position: absolute; left: 8px; background: rgba(0,0,0,0.6); color: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">❮</button>
+                        <button onclick="changeSlide(2, 1)" style="position: absolute; right: 8px; background: rgba(0,0,0,0.6); color: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">❯</button>
+                    </div>
+                </div>
+
+                <div style="padding: 1.25rem;">
+                    <span style="color: #38bdf8; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">💰 Control Financiero</span>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-top: 5px; margin-bottom: 6px;">🧾 Cuadre de caja</h3>
+                    <p style="color: var(--text-muted); font-size: 0.83rem; line-height: 1.4; margin-bottom: 12px;">Sistema rápido para cuadre de caja, control de turnos y auditoria.</p>
+                    
+                    <div style="display: flex; gap: 6px; font-size: 0.7rem; color: #94a3b8;">
+                        <span style="background: rgba(56,189,248,0.1); color: #38bdf8; padding: 3px 8px; border-radius: 4px;">✓ Cierre de Caja</span>
+                        <span style="background: rgba(56,189,248,0.1); color: #38bdf8; padding: 3px 8px; border-radius: 4px;">✓ Auditoría</span>
+                        <span style="background: rgba(56,189,248,0.1); color: #38bdf8; padding: 3px 8px; border-radius: 4px;">✓ Márgenes</span>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 0 1.25rem 1.25rem 1.25rem;">
+                <a href="https://wa.me/593992661432?text=Hola,%20me%20interesa%20el%20sistema%20de%20cuadre%20de%20caja%20y%20cálculo%20de%20vueltos" target="_blank" style="display: block; text-align: center; background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 9px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; text-decoration: none;">Cotizar Sistema de Caja 📲</a>
+            </div>
+        </div>
+
+        <!-- 3. Restaurante -->
+        <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="background: #0b0f19; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: rgba(15, 23, 42, 0.8);">
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <div style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></div>
+                            <div style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b;"></div>
+                            <div style="width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></div>
+                            <span style="font-size: 0.7rem; color: #64748b; margin-left: 6px; font-family: monospace;">restaurante.pos</span>
+                        </div>
+                        <span id="counter-3" style="font-size: 0.7rem; color: #34d399; font-family: monospace;">1 / 3</span>
+                    </div>
+                    
+                    <!-- Contenedor del Carrusel -->
+                    <div style="position: relative; background: #05070c; height: 280px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 8px;">
+                        <div class="carousel-slide-3" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"><img src="img/resto1.png" alt="Vista 1" style="max-width: 100%; max-height: 100%; object-fit: contain;"></div>
+                        <div class="carousel-slide-3" style="width: 100%; height: 100%; display: none; align-items: center; justify-content: center;"><img src="img/resto2.png" alt="Vista 2" style="max-width: 100%; max-height: 100%; object-fit: contain;"></div>
+                        <div class="carousel-slide-3" style="width: 100%; height: 100%; display: none; align-items: center; justify-content: center;"><img src="img/resto3.png" alt="Vista 3" style="max-width: 100%; max-height: 100%; object-fit: contain;"></div>
+                        
+                        <button onclick="changeSlide(3, -1)" style="position: absolute; left: 8px; background: rgba(0,0,0,0.6); color: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">❮</button>
+                        <button onclick="changeSlide(3, 1)" style="position: absolute; right: 8px; background: rgba(0,0,0,0.6); color: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">❯</button>
+                    </div>
+                </div>
+
+                <div style="padding: 1.25rem;">
+                    <span style="color: #34d399; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">🍔 Gastronomía</span>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-top: 5px; margin-bottom: 6px;">🍕 Restaurante / Pizzería</h3>
+                    <p style="color: var(--text-muted); font-size: 0.83rem; line-height: 1.4; margin-bottom: 12px;">Menú digital interactivo/Web App de pedidos a Domicilio.</p>
+                    
+                    <div style="display: flex; gap: 6px; font-size: 0.7rem; color: #94a3b8;">
+                        <span style="background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px;">✓ Menú</span>
+                        <span style="background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px;">✓ Pedidos en Mesa o Domicilio</span>
+                        <span style="background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px;">✓ Carrito de compras</span>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 0 1.25rem 1.25rem 1.25rem;">
+                <a href="https://wa.me/593992661432?text=Hola,%20quiero%20un%20sistema%20POS%20para%20mi%20restaurante" target="_blank" style="display: block; text-align: center; background: rgba(52, 211, 153, 0.1); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); padding: 9px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; text-decoration: none;">Cotizar Sistema POS 📲</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- SECCIÓN DEL ECOSISTEMA / MÓDULOS ACTIVOS CON IMPACTO -->
+<div  style="max-width: 1100px; margin-left: auto; margin-right: auto; padding: 0 1.5rem;">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <h2 style="font-size: 2.2rem; font-weight: 900; color: #fff; margin-bottom: 0.5rem;">⚙️ Módulos y Ecosistema VerifiOS</h2>
+        <p style="color: var(--text-muted);">Prueba nuestras herramientas de verificación, control comercial y sistemas activos reales en Ecuador.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        
+       <!-- Módulo 1 -->
+        <div id="modulos-section" class="card" style="text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <img src="img/verifiCarlogo.png" alt="VerifiCar Ecuador" style="width: 130px; height: auto; object-fit: contain; margin-bottom: 0.75rem; display: block;" onerror="this.outerHTML='<span style=\'font-size: 2rem; margin-bottom: 0.75rem; display: block;\'>🚗</span>'">
+                <h3 style="color: #fff; margin-bottom: 0.5rem;">VerifiCar Ecuador</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Plataforma especializada en el historial de vehículos, multas y gravámenes para evitar estafas en la compra de tu vehículo usado en Ecuador.</p>
+            </div>
+            <div>
+                <div style="font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 1rem; background: rgba(0,0,0,0.3); padding: 4px 8px; border-radius: 4px; display: inline-block;">🔥 +1,000 consultas procesadas en el mercado automotriz</div>
+                <br>
+                <a href="https://verificarecuador.com" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem;">Ir al sistema &rarr;</a>
+            </div>
+        </div>
+
+        <!-- Módulo 2 -->
+        <div class="card" style="text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <img src="img/logo-verificar-plus.png" alt="VerifiCar Plus" style="width: 130px; height: auto; object-fit: contain; margin-bottom: 0.75rem; display: block;" onerror="this.outerHTML='<span style=\'font-size: 2rem; margin-bottom: 0.75rem; display: block;\'>🍽️</span>'">
+                <h3 style="color: #fff; margin-bottom: 0.5rem;">VerifiCar Plus - POS & Restaurantes</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Sistema dedicado a restaurantes con punto de venta y Web App de pedidos a domicilio propia para eliminar el pago de altas comisiones a terceros.</p>
+            </div>
+            <div>
+                <div style="font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 1rem; background: rgba(0,0,0,0.3); padding: 4px 8px; border-radius: 4px; display: inline-block;">⚡ Operación directa sin comisiones a terceros</div>
+                <br>
+                <a href="https://plus.verificarecuador.com" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem;">Ir al Sistema &rarr;</a>
+            </div>
+        </div>
+
+        <!-- Módulo 3 -->
+        <div class="card" style="text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <span style="font-size: 2rem; margin-bottom: 0.75rem; display: block;">📦</span>
+                <h3 style="color: #fff; margin-bottom: 0.5rem;">Catálogos y Comercios</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Vitrinas digitales interactivas conectadas directamente con pedidos al WhatsApp.</p>
+            </div>
+            <div>
+                <div style="font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 1rem; background: rgba(0,0,0,0.3); padding: 4px 8px; border-radius: 4px; display: inline-block;">🚀 Implementación express para negocios</div>
+                <br>
+                <a href="https://wa.me/593992661432?text=Hola,%20quiero%20cotizar%20un%20catálogo%20interactivo%20para%20mi%20negocio" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem;">Cotizar &rarr;</a>
+            </div>
+        </div>
+
+        <!-- Módulo 4 -->
+        <div class="card" style="text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <span style="font-size: 2.2rem; margin-bottom: 0.75rem; display: block;">⏱️</span>
+                <h3 style="color: #fff; margin-bottom: 0.5rem;">Turneros & Control</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Web Apps a la medida para gestión de filas, turnos y administración de clientes.</p>
+            </div>
+            <div>
+                <div style="font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 1rem; background: rgba(0,0,0,0.3); padding: 4px 8px; border-radius: 4px; display: inline-block;">💡 Automatización de procesos locales</div>
+                <br>
+                <a href="https://wa.me/593992661432?text=Hola,%20quiero%20información%20técnica%20del%20sistema%20de%20turneros" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem;">Consultar &rarr;</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- SECCIÓN: PREGUNTAS FRECUENTES (FAQ DESPLEGABLE) -->
+<div id="faq-section" class="faq-container">
+    <div class="faq-title">
+        <h2>❓ Preguntas Frecuentes</h2>
+        <p>Todo lo que necesitas saber antes de empezar a trabajar en tu plataforma. Haz clic en una pregunta para ver la respuesta.</p>
+    </div>
+    
+    <div class="faq-grid">
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                <span>🎯 ¿Cómo es el proceso de pago y puedo ver el sistema antes?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>¡Cero riesgos! Primero te mostramos una demo en vivo o adaptada a tu negocio. Si te convence, trabajamos con el modelo 50/50: arrancas con la mitad y el 50% restante lo pagas únicamente al entregar el proyecto operativo al 100%.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                <span>🤔 ¿Cuánto tiempo toma tener mi sitio o sistema listo?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Por lo general, las landing pages y catálogos estándar se entregan completamente funcionales y listos para operar en un plazo de 2 a 4 días laborables, dependiendo del contenido y requerimientos.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                <span>⚙️ ¿Necesito conocimientos técnicos avanzados para administrarlo?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Para nada. El software está diseñado para ser extremadamente intuitivo y directo. Además, todos nuestros planes incluyen una capacitación express y guía detallada para que puedas gestionarlo desde el primer día.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                <span>☁️ ¿Hay cobros mensuales o uso de plantillas lentas?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>No usamos plantillas pesadas de WordPress ni alquileres mensuales abusivos. Desarrollamos software propio, rápido y optimizado que ya opera en el mercado ecuatoriano, configurado en la nube con dominio propio.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MENÚ / RESUMEN FLOTANTE EN LA ESQUINITA DERECHA (ARRIBA DE WHATSAPP) -->
+<div id="floatingSummary" style="position: fixed; bottom: 95px; right: 20px; width: 300px; max-width: calc(100vw - 40px); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border: 1px solid var(--accent); border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); z-index: 9999; transition: all 0.3s ease;">
+    
+    <!-- Botón para Minimizar / Expandir -->
+    <button onclick="toggleMinimizar()" id="btnMinimizar" style="position: absolute; top: -10px; right: 10px; background: var(--card-bg); color: #fff; border: 1px solid var(--accent); width: 26px; height: 26px; border-radius: 50%; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; box-shadow: 0 2px 5px rgba(0,0,0,0.3);" title="Minimizar barra">−</button>
+
+    <!-- Información de precio y accesos -->
+
+    <div class="floating-content" style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <!-- NOMBRE DEL FLOTANTE (Visible solo cuando está expandido) -->
+    <span id="floatingTitle" style="font-size: 0.75rem; font-weight: 700; color: #fff; letter-spacing: 0.5px;">⚡ VerifiOS Cotizador</span>
+                <span style="font-size: 0.65rem; color: var(--text-muted); display: block; text-transform: uppercase; letter-spacing: 0.5px;">Estimado Total</span>
+                <div id="floatingPrice" style="font-size: 1.3rem; font-weight: 900; color: #fff; line-height: 1;">$45</div>
+            </div>
+            <a href="#cotizador-section" style="background: rgba(255,255,255,0.1); color: #fff; padding: 6px 10px; border-radius: 8px; font-size: 0.75rem; text-decoration: none; font-weight: 600; border: 1px solid var(--border);">
+                🧮 Cotizador
+            </a>
+        </div>
+
+        <a id="whatsappBtnFloating" href="#" target="_blank" class="btn-glow" style="display: block; text-align: center; padding: 8px; font-size: 0.8rem; border-radius: 8px; text-decoration: none; width: 100%;">
+            📲 Cotizar por WhatsApp
+        </a>
+    </div>
+</div>
+
+<!-- SCRIPT PARA EL ACORDEÓN INTERACTIVO -->
+<script>
+
+// Array con los ejemplos llamativos que irán rotando
+const ejemplosIdeas = [
+    'Ej: "Necesito un sistema de pedidos para mi picantería..."',
+    'Ej: "Una tienda online para vender ropa con control de stock..."',
+    'Ej: "Una landing page profesional para mi consultorio médico..."',
+    'Ej: "Un catálogo digital para mi ferretería en Cuenca..."'
+];
+
+let indexPlaceholder = 0;
+let intervaloPlaceholder = null;
+
+function iniciarRotacionPlaceholder() {
+    const campoIdea = document.getElementById('ideaLibre');
+    if (!campoIdea) return;
+
+    // Cambiar el placeholder cada 3 segundos
+    intervaloPlaceholder = setInterval(() => {
+        // Solo rota si el usuario no tiene seleccionado el campo o no ha escrito nada
+        if (document.activeElement !== campoIdea && campoIdea.value === "") {
+            campoIdea.setAttribute('placeholder', ejemplosIdeas[indexPlaceholder]);
+            indexPlaceholder = (indexPlaceholder + 1) % ejemplosIdeas.length;
+        }
+    }, 3000);
+}
+
+// Detener la rotación si el usuario empieza a escribir o hace clic para que no le estorbe
+document.addEventListener("DOMContentLoaded", () => {
+    const campoIdea = document.getElementById('ideaLibre');
+    if (campoIdea) {
+        // Mostrar el primer ejemplo de inmediato al cargar
+        campoIdea.setAttribute('placeholder', ejemplosIdeas[0]);
+        indexPlaceholder = 1;
+        
+        // Arrancar el ciclo de los 3 segundos
+        iniciarRotacionPlaceholder();
+
+        // Si hace clic o escribe, limpiamos el placeholder para darle libertad total
+        campoIdea.addEventListener('focus', () => {
+            campoIdea.setAttribute('placeholder', 'Escribe aquí tu idea...');
+        });
+    }
+});
+
+
+    function toggleFaq(button) {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Opcional: Cierra las demás abiertas si quieres que solo una esté activa a la vez
+        // document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+
+        if (!isActive) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    }
+
+function actualizarSlider() {
+    const val = document.getElementById('rangoItems').value;
+    let texto = `Hasta ${val} ítems/secciones`;
+    if (val == 0) texto = "Solo estructura base";
+    if (val == 100) texto = "Más de 100 ítems (Avanzado)";
+    document.getElementById('labelSlider').innerText = texto;
+}
+
+function analizarIdeaYCotizar() {
+    const texto = document.getElementById('ideaLibre').value.toLowerCase();
+    const selectProyecto = document.getElementById('tipoProyecto');
+    const feedback = document.getElementById('aiFeedback');
+    const aiText = document.getElementById('aiTextSuggestion');
+
+    let sectorDetectado = "landing"; // por defecto
+
+    if (texto.length > 3) {
+        feedback.style.display = "block";
+        // Palabras clave para Restaurantes / Sistemas POS / Pedidos
+        if (texto.includes('restaurante') || texto.includes('comida') || texto.includes('picanteria') || texto.includes('picantería') || texto.includes('menu') || texto.includes('menú') || texto.includes('pedidos') || texto.includes('pos')) {
+            selectProyecto.value = "130"; // Sistema POS/Restaurantes
+            aiText.innerText = "Recomendado: Sistema POS / Restaurante ($130)";
+            sectorDetectado = "restaurante";
+        }
+        // Palabras clave para Tiendas / Catálogos / Ropa / Productos
+        else if (texto.includes('tienda') || texto.includes('ropa') || texto.includes('productos') || texto.includes('catalogo') || texto.includes('catálogo') || texto.includes('vender') || texto.includes('stock')) {
+            selectProyecto.value = "85"; // Catálogo Digital
+            aiText.innerText = "Recomendado: Catálogo Digital de Productos ($85)";
+            sectorDetectado = "tienda";
+        }
+        else {
+            selectProyecto.value = "45"; // Landing Page
+            aiText.innerText = "Recomendado: Landing Page / Web Profesional ($45)";
+            sectorDetectado = "landing";
+        }
+    } else {
+        feedback.style.display = "none";
+        // Si no hay texto libre, basarse en lo que el usuario seleccionó manualmente en el select
+        if (selectProyecto.value == "130") sectorDetectado = "restaurante";
+        else if (selectProyecto.value == "85") sectorDetectado = "tienda";
+        else sectorDetectado = "landing";
+    }
+
+    // Actualizar dinámicamente el visor gráfico superior
+    actualizarVisorGrafico(sectorDetectado, document.getElementById('ideaLibre').value);
+    calcularPrecioPro();
+}
+
+function actualizarVisorGrafico(sector, textoIdea) {
+    const barra = document.getElementById('visorTituloBarra');
+    const contenido = document.getElementById('visorContenido');
+    const icono = document.getElementById('visorIcono');
+    const nombrePreview = document.getElementById('visorNombrePreview');
+    const textoPreview = document.getElementById('visorTextoPreview');
+
+    if (!barra) return;
+
+    let nombreFinal = textoIdea.trim() !== "" ? textoIdea : 
+        (sector === 'restaurante' ? "Restaurante / Picantería Central" : sector === 'tienda' ? "Mi Tienda o Catálogo" : "Mi Sitio Web Profesional");
+
+    if (sector === 'restaurante') {
+        barra.innerText = "sistema-pos.preview";
+        contenido.style.borderTop = "3px solid #34d399";
+        icono.style.background = "rgba(52,211,153,0.15)";
+        icono.style.color = "#34d399";
+        icono.innerText = "🍔";
+        nombrePreview.innerText = nombreFinal;
+        textoPreview.innerText = "Módulo de caja, inventario kardex y pedidos directos integrados.";
+    } else if (sector === 'tienda') {
+        barra.innerText = "catalogo-digital.preview";
+        contenido.style.borderTop = "3px solid #f472b6";
+        icono.style.background = "rgba(244,114,182,0.15)";
+        icono.style.color = "#f472b6";
+        icono.innerText = "🛍️";
+        nombrePreview.innerText = nombreFinal;
+        textoPreview.innerText = "Catálogo visual de productos, categorías y botón de compra a WhatsApp.";
+    } else {
+        barra.innerText = "landing-page.preview";
+        contenido.style.borderTop = "3px solid var(--accent)";
+        icono.style.background = "rgba(99, 102, 241, 0.15)";
+        icono.style.color = "var(--accent)";
+        icono.innerText = "🌐";
+        nombrePreview.innerText = nombreFinal;
+        textoPreview.innerText = "Diseño limpio y adaptable para posicionar tu marca personal o negocio.";
+    }
+}
+
+function calcularPrecioPro() {
+    const selectProyecto = document.getElementById('tipoProyecto');
+    let precioBase = parseInt(selectProyecto.value);
+    let textoProyecto = selectProyecto.options[selectProyecto.selectedIndex].text;
+
+    const valorSlider = parseInt(document.getElementById('rangoItems').value);
+    let costoSlider = 0;
+    let textoSlider = `Volumen: Hasta ${valorSlider} ítems`;
+    if (valorSlider > 20 && valorSlider <= 50) {
+        costoSlider = 20;
+    } else if (valorSlider > 50 && valorSlider < 100) {
+        costoSlider = 40;
+    } else if (valorSlider >= 100) {
+        costoSlider = 70;
+        textoSlider = "Volumen: Más de 100 ítems";
+    }
+
+    let extrasTexto = [];
+    let costoExtras = 0;
+    const extraDominio = document.getElementById('extraDominio');
+    const extraBot = document.getElementById('extraBot');
+
+    if (extraDominio.checked) {
+        costoExtras += parseInt(extraDominio.value);
+        extrasTexto.push("Asesoría de Dominio Pro (+$15)");
+    }
+    if (extraBot.checked) {
+        costoExtras += parseInt(extraBot.value);
+        extrasTexto.push("Automatización de WhatsApp (+$25)");
+    }
+   
+    let totalFinal = precioBase + costoSlider + costoExtras;
+    document.getElementById('totalPrecioPro').innerText = "$" + totalFinal;
+
+    const ideaTexto = document.getElementById('ideaLibre').value.trim();
+    let mensaje = `Hola, armé mi proyecto en el cotizador web de VerifiOS y este es mi requerimiento:\n\n`;
+    if (ideaTexto !== "") {
+        mensaje += `💬 *Idea del cliente (Escrita por él):*\n"${ideaTexto}"\n\n------------------\n`;
+    }
+
+    mensaje += `🔹 *Plataforma estimada:* ${textoProyecto}\n` +
+               `🔹 *${textoSlider}*` + (costoSlider > 0 ? ` (+$${costoSlider})` : ``) + `\n`;
+    if (extrasTexto.length > 0) {
+        mensaje += `🔹 *Extras:* \n- ${extrasTexto.join('\n- ')}\n`;
+    }
+
+    mensaje += `\n💰 *Total Estimado: $${totalFinal}*\n\n¿Podemos coordinar los detalles para arrancar?`;
+
+    let urlWhatsApp = `https://wa.me/593992661432?text=${encodeURIComponent(mensaje)}`;
+    document.getElementById('whatsappBtnPro').setAttribute('href', urlWhatsApp);
+
+    // Sincronizar si existe barra flotante inferior en tu página
+    const floatingPrice = document.getElementById('floatingPrice');
+    const whatsappBtnFloating = document.getElementById('whatsappBtnFloating');
+    if (floatingPrice) floatingPrice.innerText = "$" + totalFinal;
+    if (whatsappBtnFloating) whatsappBtnFloating.setAttribute('href', urlWhatsApp);
+
+    if (typeof mostrarFlotanteDeNuevo === 'function') {
+        mostrarFlotanteDeNuevo();
+    }
+}
+let estaMinimizado = false;
+
+function toggleMinimizar() {
+    const barra = document.getElementById('floatingSummary');
+    const boton = document.getElementById('btnMinimizar');
+    const contenido = barra.querySelector('.floating-content');
+
+    if (!estaMinimizado) {
+        // Minimizar: Ocultamos el contenido y transformamos la caja en una burbuja circular limpia
+        contenido.style.display = 'none';
+        barra.style.width = '52px';
+        barra.style.height = '52px';
+        barra.style.padding = '0';
+        barra.style.borderRadius = '50%';
+        barra.style.justifyContent = 'center';
+        barra.style.alignItems = 'center';
+        
+        // Hacemos que el botón ocupe toda la burbuja con el icono del ábaco
+        boton.style.position = 'static';
+        boton.style.width = '100%';
+        boton.style.height = '100%';
+        boton.style.borderRadius = '50%';
+        boton.style.border = 'none';
+        boton.style.background = 'transparent';
+        boton.style.fontSize = '22px';
+        boton.innerHTML = '🧮';
+        boton.title = 'Abrir cotizador';
+        
+        estaMinimizado = true;
+    } else {
+        // Expandir de regreso a su diseño completo original
+        contenido.style.display = 'flex';
+        barra.style.width = '300px';
+        barra.style.height = 'auto';
+        barra.style.padding = '14px 16px';
+        barra.style.borderRadius = '16px';
+        barra.style.justifyContent = 'flex-start';
+        barra.style.alignItems = 'stretch';
+
+        // Restauramos el botón a su esquina superior derecha
+        boton.style.position = 'absolute';
+        boton.style.top = '-10px';
+        boton.style.right = '10px';
+        boton.style.width = '26px';
+        boton.style.height = '26px';
+        boton.style.borderRadius = '50%';
+        boton.style.border = '1px solid var(--accent)';
+        boton.style.background = 'var(--card-bg)';
+        boton.style.fontSize = '14px';
+        boton.innerHTML = '−';
+        boton.title = 'Minimizar barra';
+        
+        estaMinimizado = false;
+    }
+}
+// Función para asegurarnos de que si el usuario interactúa con el cotizador principal, la barra se expanda sola si estaba minimizada
+function mostrarFlotanteDeNuevo() {
+    const barra = document.getElementById('floatingSummary');
+    if (estaMinimizado) {
+        toggleMinimizar(); // Si estaba minimizada, la abrimos automáticamente para que vea su nuevo precio
+    }
+}
+
+
+// Inicializar al cargar la página
+window.onload = function() {
+    if(typeof calcularPrecioPro === 'function') {
+        calcularPrecioPro();
+    }
+};
+
+function toggleMenuMobile() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+}
+
+// Función para ocultar el menú automáticamente al hacer clic en cualquier enlace
+function cerrarMenuMobile() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.remove('active');
+}
+
+// Objeto para llevar la cuenta de la diapositiva actual de cada tarjeta (1, 2 y 3)
+    const slideIndices = { 1: 0, 2: 0, 3: 0 };
+
+    function changeSlide(cardId, direction) {
+        const slides = document.querySelectorAll(`.carousel-slide-${cardId}`);
+        const counter = document.getElementById(`counter-${cardId}`);
+        
+        // Ocultar la actual
+        slides[slideIndices[cardId]].style.display = 'none';
+        
+        // Calcular la siguiente posición en bucle (0, 1, 2)
+        slideIndices[cardId] = (slideIndices[cardId] + direction + slides.length) % slides.length;
+        
+        // Mostrar la nueva
+        slides[slideIndices[cardId]].style.display = 'flex';
+        
+        // Actualizar el texto del contador (ej: "2 / 3")
+        counter.innerText = `${slideIndices[cardId] + 1} / ${slides.length}`;
+    }
+
+
+let ultimoScroll = 0;
+    const navbar = document.querySelector('.navbar-sticky');
+
+    window.addEventListener('scroll', function() {
+        const scrollActual = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Si estamos arriba del todo, aseguramos que se vea la barra
+        if (scrollActual <= 50) {
+            navbar.style.transform = 'translateY(0)';
+            return;
+        }
+
+        if (scrollActual > ultimoScroll) {
+            // Bajando el scroll -> Ocultar barra hacia arriba
+            navbar.style.transform = 'translateY(-100%)';
+        } else {
+            // Subiendo el scroll -> Mostrar barra
+            navbar.style.transform = 'translateY(0)';
+        }
+        
+        ultimoScroll = scrollActual <= 0 ? 0 : scrollActual;
+    });
+
+</script>
+
+
+   <!-- SECCIÓN DE DIFERENCIACIÓN TÉCNICA (VS MERCADO) - CON EMOJIS -->
+<section style="max-width: 950px; margin: 5rem auto; padding: 0 1.5rem;">
+    
+    <!-- Título de la sección -->
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <span style="background: rgba(59, 130, 246, 0.1); color: #60a5fa; padding: 6px 16px; border-radius: 9999px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; border: 1px solid rgba(59, 130, 246, 0.2);">Ventaja Competitiva</span>
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-top: 1rem; letter-spacing: -0.5px;">¿Por qué elegir VerifiOS frente al mercado tradicional?</h2>
+        <p style="color: #94a3b8; font-size: 1.05rem; margin-top: 0.5rem;">No vendemos promesas vacías ni plantillas lentas; entregamos infraestructura operativa real.</p>
+    </div>
+
+    <!-- Contenedor de las dos columnas de comparación -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: stretch;">
+        
+        <!-- COLUMNA 1: EL MERCADO / AGENCIAS COMUNES -->
+        <div style="background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 20px; padding: 2.5rem 2rem; position: relative; overflow: hidden; backdrop-filter: blur(10px); transition: transform 0.3s ease, border-color 0.3s ease;">
+            <!-- Línea superior roja -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: #ef4444;"></div>
+            
+            <h3 style="color: #fca5a5; font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
+                <span>❌</span> Agencias y Desarrolladores Comunes
+            </h3>
+            
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.2rem; color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">
+                <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.1rem; line-height: 1;">💸</span> Pagos adelantados a ciegas sin ver el producto funcionando.</li>
+                <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.1rem; line-height: 1;">🐢</span> Usan plantillas pesadas de WordPress que tardan en cargar.</li>
+                <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.1rem; line-height: 1;">🔒</span> Alquileres mensuales abusivos y cobros sorpresas por mantenimiento.</li>
+                <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.1rem; line-height: 1;">⏳</span> Soporte técnico lento y sin respuestas claras.</li>
+            </ul>
+        </div>
+
+        <!-- COLUMNA 2: EL ESTÁNDAR VERIFIOS (DESTACADA) -->
+        <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.9)); border: 2px solid rgba(52, 211, 153, 0.4); border-radius: 20px; padding: 2.5rem 2rem; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(52, 211, 153, 0.08); backdrop-filter: blur(10px); transform: translateY(-4px);">
+            <!-- Línea superior degradada -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #34d399, #3b82f6);"></div>
+            
+            <h3 style="color: #34d399; font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
+                <span>⚡</span> El Ecosistema VerifiOS
+            </h3>
+            
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.2rem; color: #e2e8f0; font-size: 0.95rem; line-height: 1.5;">
+                <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.1rem; line-height: 1;">🎯</span> Primero pruebas con demo en vivo; modelo 50/50 sin riesgos.</li>
+                <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.1rem; line-height: 1;">💻</span> Código limpio a la medida (Python, Flask, JavaScript moderno).</li>
+                <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.1rem; line-height: 1;">🛡️</span> Cero mensualidades obligatorias: sistemas para facturar y operar.</li>
+                <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.1rem; line-height: 1;">🤝</span> Soporte técnico directo con el programador en Ecuador 🇪🇨.</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+
+<footer style="width: 100%; padding: 60px 20px; color: #94a3b8; font-size: 0.95em; border-top: 3px solid #6366f1; margin-top: 60px; background-color: #090d16; display: flex; flex-direction: column; align-items: center; text-align: center; box-sizing: border-box;">
+    <div style="width: 100%; max-width: 600px;">
+        
+        <!-- LOGO MÁS GRANDE EN EL FOOTER -->
+        <div style="margin-bottom: 25px;">
+            <img src="img/logoverisinfondo.png" alt="Logo VerifiOS" style="height: 120px; width: auto; display: block; margin: 0 auto;">
+        </div>
+        
+        <p style="margin: 0 0 25px 0; font-style: italic; color: #818cf8;">"Tu ecosistema de gestión: simple, inteligente y a tu medida." 🚀</p>
+
+       
+        
+        <p style="margin: 10px 0; color: #cbd5e1;">📩 ¿Contacto directo o soporte? Escríbenos a: <br>
+            <a href="mailto:contacto@verificarecuador.com" style="color: #818cf8; font-weight: bold; text-decoration: none; font-size: 1.1em;">contacto@verificarecuador.com</a>
+        </p>
+
+        <!-- Redes Sociales -->
+        <div style="margin: 25px 0;">
+            <a href="https://www.facebook.com/profile.php?id=61594509927384" target="_blank" title="Visítanos en Facebook" style="text-decoration: none; color: #1877F2; display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; background: #111827; border-radius: 50px; border: 1px solid #1f2937; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <i class="fa-brands fa-facebook" style="font-size: 1.5rem;"></i>
+                <span style="font-weight: bold; color: #ffffff;">VerifiOS</span>
+            </a>
+        </div>
+
+        <!-- Detalles técnicos / Confianza -->
+        <div style="margin: 25px 0; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; font-size: 0.85rem; color: #94a3b8;">
+            <span>⚡ Python & Flask Backend</span>
+            <span>•</span>
+            <span>☁️ Entornos Cloud Optimizados</span>
+            <span>•</span>
+            <span>🔒 Arquitectura Segura</span>
+        </div>
+
+        <!-- Aviso Legal / Institucional -->
+        <p style="margin-top: 30px; font-size: 0.8em; color: #64748b; line-height: 1.4; text-align: justify; border-top: 1px solid #1f2937; padding-top: 20px;">
+            <strong>⚖️ Aviso legal:</strong> VerifiOS centraliza soluciones de gestión comercial, vehicular y utilidades operativas. Las herramientas provistas se ofrecen bajo estándares de alta disponibilidad y optimización local. El uso de las mismas está sujeto a los términos de servicio de cada módulo.
+        </p>
+
+        <!-- Footer Copyright -->
+        <div style="margin-top: 30px; text-align: center; font-size: 13px; color: #64748b;">
+            <p style="margin: 5px 0;">&copy; 2026 VerifiOS. Ecosistema digital y de software en Ecuador.</p>
+            <p style="margin: 5px 0;">
+                🇪🇨 Operado desde <strong>Cuenca, Ecuador</strong>.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- BOTÓN FLOTANTE DE WHATSAPP -->
+<a href="https://wa.me/593992661432?text=Hola,%20vengo%20de%20la%20web%20de%20VerifiOS%20y%20quiero%20más%20información" 
+   target="_blank" 
+   class="whatsapp-float" 
+   title="Contáctanos por WhatsApp">
+    <svg viewBox="0 0 32 32" width="34" height="34" fill="#ffffff" class="whatsapp-icon">
+        <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.808 8.008-2.101c2.378 1.296 5.092 1.983 7.992 1.983 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.433 0-4.811-0.654-6.914-1.892l-0.496-0.294-5.111 1.341 1.365-4.978-0.322-0.513c-1.342-2.135-2.051-4.607-2.051-7.142 0-7.364 5.991-13.355 13.355-13.355s13.355 5.991 13.355 13.355c0 7.364-5.991 13.355-13.355 13.355zM22.954 19.535c-0.327-0.164-1.936-0.955-2.236-1.064s-0.518-0.164-0.736 0.164c-0.218 0.327-0.845 1.064-1.036 1.282s-0.382 0.255-0.709 0.091c-0.327-0.164-1.382-0.509-2.636-1.627-0.973-0.864-1.627-1.927-1.818-2.255s-0.018-0.5 0.145-0.664c0.15-0.15 0.327-0.382 0.491-0.573s0.218-0.327 0.327-0.545c0.109-0.218 0.055-0.409-0.027-0.573s-0.736-1.773-1.009-2.427c-0.264-0.636-0.532-0.55-0.736-0.56-0.191-0.009-0.409-0.009-0.627-0.009s-0.573 0.082-0.873 0.409c-0.3 0.327-1.145 1.118-1.145 2.727s1.173 3.145 1.336 3.364c0.164 0.218 2.309 3.527 5.591 4.945 0.782 0.336 1.391 0.536 1.868 0.686 0.786 0.25 1.5 0.214 2.068 0.13 0.632-0.095 1.936-0.791 2.209-1.555s0.273-1.409 0.191-1.555c-0.082-0.145-0.3-0.232-0.627-0.395z"></path>
+    </svg>
+</a>
+</body>
+</html>

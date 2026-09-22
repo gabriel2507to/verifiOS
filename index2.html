@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="es-EC">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas Gratuitas | VerifiOS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#090d16">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="style.css">
+   <style>
+    :root {
+        --bg: #090d16;
+        --card-bg: #111827;
+        --border: #1f2937;
+        --accent: #6366f1;
+        --accent-hover: #4f46e5;
+        --text: #f3f4f6;
+        --text-muted: #9ca3af;
+        --success: #10b981;
+    }
+
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+        font-family: 'Inter', -apple-system, sans-serif;
+        margin: 0; padding: 0;
+        background: var(--bg);
+        color: var(--text);
+    }
+
+    /* NAVEGACIÓN FIJA ESTILO VERIFIOS */
+    nav {
+        position: fixed; top: 0; left: 0; width: 100%;
+        background: rgba(9, 13, 22, 0.95); backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border); z-index: 1000;
+        padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .logo { font-weight: 900; font-size: 1.3rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    
+    .nav-links { display: flex; gap: 1.5rem; align-items: center; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+
+    /* WIDGET CALCULADORA CENTRADO */
+    .main-container {
+        padding: 120px 20px 60px 20px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .calculadora-widget {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-top: 5px solid var(--accent);
+        border-radius: 16px;
+        padding: 28px;
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+    }
+
+    .tabs {
+        display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px;
+        background: var(--bg); padding: 5px; border-radius: 10px;
+        border: 1px solid var(--border);
+    }
+
+    .tab-btn {
+        flex: 1; min-width: 80px; background: transparent; border: none; color: var(--text-muted);
+        padding: 10px 6px; font-size: 0.73rem; font-weight: 600; cursor: pointer; border-radius: 8px; transition: all 0.25s ease;
+    }
+
+    .tab-btn.active {
+        background-color: var(--card-bg); color: var(--text);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--border);
+    }
+
+    .tool-section { display: none; }
+    .tool-section.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(4px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .input-group { margin-bottom: 14px; }
+    label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    input, select {
+        width: 100%; padding: 11px 14px; background-color: var(--bg);
+        border: 1.5px solid var(--border); border-radius: 10px; color: var(--text); font-size: 0.95rem;
+    }
+    input:focus, select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2); }
+
+    .result-box {
+        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+        border: 1.5px solid var(--border); border-radius: 10px; padding: 16px; margin-top: 18px; text-align: center;
+    }
+    .result-box h3 { font-size: 0.75rem; color: #818cf8; margin: 0 0 6px 0; font-weight: 700; }
+    .result-value { font-size: 1.6rem; font-weight: 800; color: #ffffff; }
+
+    .grid-caja { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    .promo-box {
+        margin-top: 24px; background: linear-gradient(135deg, rgba(17, 24, 39, 0.5) 0%, rgba(99, 102, 241, 0.08) 100%);
+        border: 1.5px dashed rgba(99, 102, 241, 0.4); border-radius: 12px; padding: 16px; text-align: center;
+    }
+    .promo-box p { font-size: 0.8rem; color: var(--text); margin: 0 0 12px 0; line-height: 1.4; }
+
+    .whatsapp-btn {
+        display: inline-block; background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+        color: #ffffff; text-decoration: none; padding: 11px 16px; border-radius: 10px; font-weight: 700; font-size: 0.85rem; width: 100%;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); text-align: center;
+    }
+
+    /* VITRINA DE ECOSISTEMA ABAJO */
+    .ecosystem-grid {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;
+    }
+    .eco-card {
+        background: var(--bg); padding: 12px; border-radius: 8px; text-decoration: none; color: #fff; text-align: left; display: block; border: 1px solid var(--border);
+    }
+    .eco-card strong { font-size: 0.85rem; color: #818cf8; display: block; margin-bottom: 2px; }
+    .eco-card span { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* ========================================================
+       ESTILOS DE IMPRESIÓN (Solo imprime el ticket)
+       ======================================================== */
+    @media print {
+        body {
+            visibility: hidden !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        #ticketWow, #ticketWow * {
+            visibility: visible !important;
+        }
+        
+        #ticketWow {
+            position: absolute !important;
+            top: 0 !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 100% !important;
+            max-width: 300px !important;
+            margin: 0 !important;
+            padding: 10px !important;
+            text-align: center !important;
+        }
+        
+        #ticketWow div, 
+        #ticketWow span, 
+        #ticketWow strong, 
+        #ticketWow p, 
+        #contenidoTicket {
+            text-align: center !important;
+            justify-content: center !important;
+            display: block !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        
+        button, .tab-btn, .whatsapp-btn, .tabs {
+            display: none !important;
+        }
+
+        * {
+            background: transparent !important;
+            color: black !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+    }
+</style>
+</head>
+<body>
+
+   <!-- BARRA DE NAVEGACIÓN VERIFIOS -->
+<nav>
+    <a href="index.html" class="logo">⚡ VerifiOS 🌐</a>
+    <div class="nav-links">
+        <a href="index.html">🏠 Inicio</a>
+        <!-- Botón interactivo para disparar la instalación de la Web App -->
+        <button id="btnInstalarApp" style="display: none; background: var(--accent); color: #fff; border: none; padding: 6px 12px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer; align-items: center; gap: 6px;">
+            📥 Instalar App
+        </button>
+    </div>
+</nav>
+
+
+
+
+    <!-- CONTENEDOR DE LA HERRAMIENTA -->
+    <div class="main-container">
+        <div class="calculadora-widget">
+            
+            <div style="margin-bottom: 20px; text-align: center;">
+                <h2 style="margin: 0; font-size: 1.2rem; color: #818cf8;">Herramientas Operativas y Cotidianas</h2>
+                <p style="margin: 5px 0 0 0; font-size: 0.8rem; color: var(--text-muted);">Desarrollado por el ecosistema VerifiOS</p>
+            </div>
+
+            <!-- Pestañas actualizadas con herramientas para el día a día -->
+            <div class="tabs">
+                <button class="tab-btn active" onclick="cambiarHerramienta('vueltos', event)">💸 Vueltos</button>
+                <button class="tab-btn" onclick="cambiarHerramienta('caja', event)">📊 Cuadre</button>
+                <button class="tab-btn" onclick="cambiarHerramienta('precios', event)">📈 Precios</button>
+                <button class="tab-btn" onclick="cambiarHerramienta('super', event)">🛒 Súper</button>
+                <button class="tab-btn" onclick="cambiarHerramienta('cuentas', event)">👥 Cuentas</button>
+                <button class="tab-btn" onclick="cambiarHerramienta('gastos', event)">📝 Gastos</button>
+            </div>
+
+            <!-- SECCIÓN 1: VUELTOS -->
+            <div id="seccion-vueltos" class="tool-section active">
+                <div class="input-group">
+                    <label>Valor a Cobrar ($):</label>
+                    <input type="number" id="valorCobro" step="0.01" placeholder="Ej. 3.75" oninput="calcularVuelto()">
+                </div>
+                <div class="input-group">
+                    <label>Pagan con billete de ($):</label>
+                    <input type="number" id="billetePago" step="0.01" placeholder="Ej. 20.00" oninput="calcularVuelto()">
+                </div>
+                <div class="result-box">
+                    <h3>VUELTO EXACTO A ENTREGAR:</h3>
+                    <div class="result-value" id="txtVuelto">$0.00</div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 2: CUADRE DE CAJA CON FONDO INICIAL -->
+            <div id="seccion-caja" class="tool-section">
+                <div class="input-group">
+                    <label>Nombre del Negocio:</label>
+                    <input type="text" id="nombreNegocioInput" placeholder="Ej. Mi Local">
+                </div>
+                <div class="input-group">
+                    <label>Fondo Inicial en Caja / Sencillo Restante ($):</label>
+                    <input type="number" id="fondoInicial" step="0.01" value="0" min="0" placeholder="Ej. 50.00" oninput="calcularCaja()">
+                </div>
+                <div class="grid-caja">
+                    <div class="input-group"><label>Monedas $0.01:</label><input type="number" class="caja-input" data-valor="0.01" value="0" min="0" oninput="calcularCaja()"></div>
+                    <div class="input-group"><label>Monedas $0.05:</label><input type="number" class="caja-input" data-valor="0.05" value="0" min="0" oninput="calcularCaja()"></div>
+                    <div class="input-group"><label>Monedas $0.10:</label><input type="number" class="caja-input" data-valor="0.10" value="0" min="0" oninput="calcularCaja()"></div>
+                    <div class="input-group"><label>Monedas $0.25:</label><input type="number" class="caja-input" data-valor="0.25" value="0" min="0" oninput="calcularCaja()"></div>
+                    <div class="input-group"><label>Monedas $0.50:</label><input type="number" class="caja-input" data-valor="0.50" value="0" min="0" oninput="calcularCaja()"></div>
+                    <div class="input-group"><label>Billetes $1.00:</label><input type="number" class="caja-input" data-valor="1.00" value="0" min="0" oninput="calcularCaja()"></div>
+                    <div class="input-group"><label>Billetes $5.00:</label><input type="number" class="caja-input" data-valor="5.00" value="0" min="0" oninput="calcularCaja()"></div>
+                    <div class="input-group"><label>Billetes $10.00:</label><input type="number" class="caja-input" data-valor="10.00" value="0" min="0" oninput="calcularCaja()"></div>
+                    <div class="input-group" style="grid-column: span 2;"><label>Billetes $20.00 o más:</label><input type="number" class="caja-input" data-valor="20.00" value="0" min="0" oninput="calcularCaja()"></div>
+                </div>
+                
+                <div class="result-box" style="text-align: left; padding: 14px;">
+                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px;">Efectivo Total Contado: <strong id="txtBrutoCaja" style="color: #fff;">$0.00</strong></div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px;">Menos Fondo Inicial: <strong id="txtFondoCaja" style="color: #fff;">$0.00</strong></div>
+                    <hr style="border: 0; border-top: 1px solid var(--border); margin: 8px 0;">
+                    <h3 style="margin: 0; font-size: 0.75rem; color: #818cf8;">VENTAS NETAS EN EFECTIVO:</h3>
+                    <div class="result-value" id="txtTotalCaja" style="font-size: 1.4rem; margin-top: 4px;">$0.00</div>
+                </div>
+
+               <!-- Botón Generar Recibo -->
+                <div style="margin-top: 20px; text-align: center;">
+                    <p style="font-size: 0.75rem; color: #818cf8; margin-bottom: 8px;">¿Terminaste de sumar? Crea tu comprobante al instante:</p>
+                    <button onclick="generarEfectoWow()" style="background: linear-gradient(135deg, var(--success), #059669); color: #fff; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 0.95rem; width: 100%; box-shadow: 0 4px 15px rgba(16,185,129,0.3); transition: transform 0.1s;">
+                        🧾 Generar mi Recibo de Caja
+                    </button>
+                </div>
+
+                <!-- Ticket que aparece con animación -->
+                <div id="ticketWow" style="display: none; background: #111827; color: #f3f4f6; border: 2px dashed #374151; border-top: 6px solid #10b981; border-radius: 8px; padding: 22px; margin-top: 25px; text-align: left; font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; box-shadow: 0 15px 35px rgba(0,0,0,0.4); position: relative;">
+                    
+                    <!-- Encabezado del Ticket -->
+                    <div style="text-align: center; border-bottom: 2px dashed #374151; padding-bottom: 10px; margin-bottom: 12px;">
+                        <strong style="color: #ffffff; font-size: 1.05rem; letter-spacing: 0.5px;">🧾 VERIFIOS</strong><br>
+                        <span style="color: #9ca3af; font-size: 0.75rem; font-weight: bold;">Control Operativo de Caja</span>
+                    </div>
+
+                    <!-- Datos dinámicos -->
+                    <div id="contenidoTicket" style="line-height: 1.6; color: #f3f4f6;">
+                        <!-- Se rellena con JS -->
+                    </div>
+                    
+                    <!-- Pie del ticket con el lema -->
+                    <div style="text-align: center; margin-top: 15px; border-top: 2px dashed #374151; padding-top: 10px; font-size: 0.75rem; color: #9ca3af;">
+                        <i>⚡ Tu ecosistema de gestión: simple, inteligente y a tu medida.</i><br>
+                        <strong style="color: #34d399; font-size: 0.8rem;">VerifiOS</strong><br>
+                        <i>verifios.verificarecuador.com</i>
+                    </div>
+
+                    <!-- Botones de Acción Extra para el Ticket -->
+                    <div style="display: flex; gap: 10px; margin-top: 18px;">
+                        <button onclick="copiarTicket()" style="flex: 1; background: #1f2937; color: #f3f4f6; border: 1px solid #374151; padding: 9px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; cursor: pointer;">
+                            📋 Copiar Ticket
+                        </button>
+                        <button onclick="window.print()" style="flex: 1; background: #10b981; color: #fff; border: none; padding: 9px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; cursor: pointer;">
+                            🖨️ Imprimir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 3: PRECIOS, MÁRGENES E IVA -->
+            <div id="seccion-precios" class="tool-section">
+                <div class="input-group">
+                    <label>Costo o Valor Base ($):</label>
+                    <input type="number" id="costoBase" step="0.01" placeholder="Ej. 10.00" oninput="calcularPrecios()">
+                </div>
+                <div class="input-group">
+                    <label>Porcentaje de Ganancia / Margen (%):</label>
+                    <input type="number" id="margenPorcentaje" step="1" placeholder="Ej. 30" oninput="calcularPrecios()">
+                </div>
+                <div class="result-box" style="text-align: left; padding: 14px;">
+                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px;">Precio sin IVA: <strong id="txtPrecioSinIva" style="color: #fff;">$0.00</strong></div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px;">IVA (15%): <strong id="txtIvaCalculado" style="color: #fff;">$0.00</strong></div>
+                    <hr style="border: 0; border-top: 1px solid var(--border); margin: 8px 0;">
+                    <h3 style="margin: 0; font-size: 0.75rem; color: #818cf8;">PRECIO FINAL AL PÚBLICO (CON IVA):</h3>
+                    <div class="result-value" id="txtPrecioFinal" style="font-size: 1.4rem; margin-top: 4px;">$0.00</div>
+                </div>
+
+                <div style="margin-top: 15px; text-align: center;">
+                    <button onclick="copiarPrecio()" style="background: #1f2937; color: #f3f4f6; border: 1px solid var(--border); padding: 10px; border-radius: 8px; font-size: 0.8rem; font-weight: bold; cursor: pointer; width: 100%;">
+                        📋 Copiar Cálculo de Precio
+                    </button>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 4: COMPARADOR DE SUPERMERCADO (¿Cuál tamaño conviene más?) -->
+            <div id="seccion-super" class="tool-section">
+                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0; margin-bottom: 14px;">Compara dos presentaciones de un producto para saber cuál es más barata por gramo, ml o unidad.</p>
+                
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 12px;">
+                    <strong style="font-size: 0.78rem; color: #818cf8; display: block; margin-bottom: 8px;">📦 Opción A</strong>
+                    <div class="grid-caja">
+                        <div class="input-group" style="margin-bottom: 0;"><label>Precio ($):</label><input type="number" id="precioA" step="0.01" placeholder="Ej. 3.50" oninput="calcularSuper()"></div>
+                        <div class="input-group" style="margin-bottom: 0;"><label>Cantidad (g/ml/u):</label><input type="number" id="cantA" step="any" placeholder="Ej. 400" oninput="calcularSuper()"></div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 14px;">
+                    <strong style="font-size: 0.78rem; color: #818cf8; display: block; margin-bottom: 8px;">📦 Opción B</strong>
+                    <div class="grid-caja">
+                        <div class="input-group" style="margin-bottom: 0;"><label>Precio ($):</label><input type="number" id="precioB" step="0.01" placeholder="Ej. 6.20" oninput="calcularSuper()"></div>
+                        <div class="input-group" style="margin-bottom: 0;"><label>Cantidad (g/ml/u):</label><input type="number" id="cantB" step="any" placeholder="Ej. 750" oninput="calcularSuper()"></div>
+                    </div>
+                </div>
+
+                <div class="result-box" style="text-align: center; padding: 14px;">
+                    <h3 style="margin-bottom: 4px;">RESULTADO DEL COMPARADOR:</h3>
+                    <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 6px;" id="txtDetalleSuper">Ingresa los datos arriba</div>
+                    <div class="result-value" id="txtGanadorSuper" style="font-size: 1.2rem; color: #34d399;">-</div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 5: DIVISIÓN DE CUENTAS, CONSUMOS Y PROPINAS -->
+            <div id="seccion-cuentas" class="tool-section">
+                <div class="input-group">
+                    <label>Consumo Total de la Cuenta ($):</label>
+                    <input type="number" id="consumoTotal" step="0.01" placeholder="Ej. 84.50" oninput="calcularCuentas()">
+                </div>
+                <div class="grid-caja" style="margin-bottom: 14px;">
+                    <div class="input-group">
+                        <label>Número de Personas:</label>
+                        <input type="number" id="numPersonas" step="1" value="1" min="1" oninput="calcularCuentas()">
+                    </div>
+                    <div class="input-group">
+                        <label>Propina / Servicio (%):</label>
+                        <input type="number" id="porcentajePropina" step="1" value="10" min="0" placeholder="Ej. 10" oninput="calcularCuentas()">
+                    </div>
+                </div>
+                <div class="result-box" style="text-align: left; padding: 14px;">
+                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px;">Total con Propina: <strong id="txtTotalConPropina" style="color: #fff;">$0.00</strong></div>
+                    <hr style="border: 0; border-top: 1px solid var(--border); margin: 8px 0;">
+                    <h3 style="margin: 0; font-size: 0.75rem; color: #818cf8;">TOTAL A PAGAR POR CADA PERSONA:</h3>
+                    <div class="result-value" id="txtPagoPorPersona" style="font-size: 1.4rem; margin-top: 4px;">$0.00</div>
+                </div>
+                <div style="margin-top: 15px; text-align: center;">
+                    <button onclick="copiarCuentas()" style="background: #1f2937; color: #f3f4f6; border: 1px solid var(--border); padding: 10px; border-radius: 8px; font-size: 0.8rem; font-weight: bold; cursor: pointer; width: 100%;">
+                        📋 Copiar División de Cuenta
+                    </button>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 6: DIARIO DE BOLSILLO (CONTROL RÁPIDO DE GASTOS DIARIOS) -->
+            <div id="seccion-gastos" class="tool-section">
+                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0; margin-bottom: 14px;">Anota tus gastos del día al instante sin complicaciones ni registros.</p>
+                
+                <div class="grid-caja" style="margin-bottom: 10px;">
+                    <div class="input-group" style="margin-bottom: 0;">
+                        <label>Descripción:</label>
+                        <input type="text" id="gastoDesc" placeholder="Ej. Almuerzo">
+                    </div>
+                    <div class="input-group" style="margin-bottom: 0;">
+                        <label>Valor ($):</label>
+                        <input type="number" id="gastoMonto" step="0.01" placeholder="Ej. 3.50">
+                    </div>
+                </div>
+                <button onclick="agregarGasto()" style="background: var(--accent); color: #fff; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 0.85rem; width: 100%; margin-bottom: 14px;">
+                    ➕ Agregar Gasto a la Lista
+                </button>
+
+                <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px; max-height: 150px; overflow-y: auto; margin-bottom: 12px;">
+                    <div id="listaGastosUI" style="font-size: 0.8rem; color: var(--text-muted); text-align: center; padding: 10px;">No hay gastos registrados hoy.</div>
+                </div>
+
+                <div class="result-box" style="text-align: left; padding: 12px; margin-top: 0;">
+                    <h3 style="margin: 0; font-size: 0.75rem; color: #818cf8;">TOTAL GASTADO HOY:</h3>
+                    <div class="result-value" id="txtTotalGastos" style="font-size: 1.3rem; margin-top: 2px;">$0.00</div>
+                </div>
+
+                <div style="display: flex; gap: 8px; margin-top: 12px;">
+                    <button onclick="copiarGastos()" style="flex: 1; background: #1f2937; color: #f3f4f6; border: 1px solid var(--border); padding: 9px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; cursor: pointer;">
+                        📋 Copiar Resumen
+                    </button>
+                    <button onclick="limpiarGastos()" style="background: #7f1d1d; color: #fca5a5; border: none; padding: 9px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; cursor: pointer;">
+                        🗑️ Limpiar
+                    </button>
+                </div>
+            </div>
+
+           <!-- PUENTE Y ENLACES CRUZADOS -->
+<div class="promo-box" style="margin: 20px auto 40px auto; padding: 20px; background: #111827; border-radius: 15px; border: 1px dashed #374151; box-shadow: 0 4px 6px rgba(0,0,0,0.2); text-align: center;">
+    <p style="margin: 0 0 15px 0; font-weight: bold; color: #ffffff;">Explora nuestras soluciones tecnológicas:</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 15px;">
+        
+        <!-- VerifiCar -->
+        <a href="https://verificarecuador.com" target="_blank" style="text-decoration: none; background: #090d16; border: 1px solid #1f2937; padding: 12px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; transition: border-color 0.2s;">
+            <strong style="color: #6366f1; font-size: 0.95em;">🚗 VerifiCar Ecuador</strong>
+            <span style="color: #94a3b8; font-size: 0.8em; margin-top: 4px; text-align: center;">Evita estafas y multas ocultas, revisa el historial vehicular.</span>
+        </a>
+
+        <!-- VerifiCar Plus -->
+        <a href="https://plus.verificarecuador.com" target="_blank" style="text-decoration: none; background: #090d16; border: 1px solid #1f2937; padding: 12px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; transition: border-color 0.2s;">
+            <strong style="color: #25d366; font-size: 0.95em;">🍔 VerifiCar Plus</strong>
+            <span style="color: #94a3b8; font-size: 0.8em; margin-top: 4px; text-align: center;">Más ventas, cero comisiones / Negocios Gastronomicos.</span>
+        </a>
+
+        <!-- Pedidos a Domicilio (Ejemplo) -->
+        <a href="https://pedidosplus.netlify.app/index.html" target="_blank" style="text-decoration: none; background: #090d16; border: 1px solid #1f2937; padding: 12px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; transition: border-color 0.2s;">
+            <strong style="color: #f59e0b; font-size: 0.95em;">📦 Deliverys</strong>
+            <span style="color: #94a3b8; font-size: 0.8em; margin-top: 4px; text-align: center;">Web App de pedidos a domicilio.</span>
+        </a>
+
+        <!-- VerifiCar Market (Ejemplo) -->
+        <a href="https://verificarmarket.onrender.com/" target="_blank" style="text-decoration: none; background: #090d16; border: 1px solid #1f2937; padding: 12px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; transition: border-color 0.2s;">
+            <strong style="color: #3b82f6; font-size: 0.95em;">🛒 VerifiCar Market</strong>
+            <span style="color: #94a3b8; font-size: 0.8em; margin-top: 4px; text-align: center;">Mercado seguro de vehículos.</span>
+        </a>
+
+    </div>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        function cambiarHerramienta(tipo, evt) {
+            document.querySelectorAll('.tool-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('seccion-' + tipo).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        function calcularVuelto() {
+            const cobro = parseFloat(document.getElementById('valorCobro').value) || 0;
+            const pago = parseFloat(document.getElementById('billetePago').value) || 0;
+            let vuelto = pago - cobro;
+            if (vuelto < 0) vuelto = 0;
+            document.getElementById('txtVuelto').innerText = `$${vuelto.toFixed(2)}`;
+        }
+
+        function calcularCaja() {
+            const inputs = document.querySelectorAll('.caja-input');
+            let bruto = 0;
+            inputs.forEach(input => {
+                const cantidad = parseInt(input.value) || 0;
+                const valorUnitario = parseFloat(input.getAttribute('data-valor')) || 0;
+                bruto += cantidad * valorUnitario;
+            });
+
+            const fondo = parseFloat(document.getElementById('fondoInicial').value) || 0;
+            let neto = bruto - fondo;
+            if (neto < 0) neto = 0;
+
+            document.getElementById('txtBrutoCaja').innerText = `$${bruto.toFixed(2)}`;
+            document.getElementById('txtFondoCaja').innerText = `$${fondo.toFixed(2)}`;
+            document.getElementById('txtTotalCaja').innerText = `$${neto.toFixed(2)}`;
+        }
+
+        function calcularPrecios() {
+            const costo = parseFloat(document.getElementById('costoBase').value) || 0;
+            const margen = parseFloat(document.getElementById('margenPorcentaje').value) || 0;
+            
+            const precioSinIva = costo + (costo * (margen / 100));
+            const valorIva = precioSinIva * 0.15;
+            const precioFinal = precioSinIva + valorIva;
+
+            document.getElementById('txtPrecioSinIva').innerText = `$${precioSinIva.toFixed(2)}`;
+            document.getElementById('txtIvaCalculado').innerText = `$${valorIva.toFixed(2)}`;
+            document.getElementById('txtPrecioFinal').innerText = `$${precioFinal.toFixed(2)}`;
+        }
+
+        function calcularSuper() {
+            const pA = parseFloat(document.getElementById('precioA').value) || 0;
+            const cA = parseFloat(document.getElementById('cantA').value) || 0;
+            const pB = parseFloat(document.getElementById('precioB').value) || 0;
+            const cB = parseFloat(document.getElementById('cantB').value) || 0;
+
+            const lblDetalle = document.getElementById('txtDetalleSuper');
+            const lblGanador = document.getElementById('txtGanadorSuper');
+
+            if (cA <= 0 || cB <= 0 || pA <= 0 || pB <= 0) {
+                lblDetalle.innerText = "Ingresa precios y cantidades válidas en ambas opciones";
+                lblGanador.innerText = "-";
+                return;
+            }
+
+            const unitA = pA / cA;
+            const unitB = pB / cB;
+
+            lblDetalle.innerHTML = `Opción A: $${unitA.toFixed(4)} por unidad<br>Opción B: $${unitB.toFixed(4)} por unidad`;
+
+            if (unitA < unitB) {
+                lblGanador.innerHTML = "🏆 ¡Te conviene más la Opción A!";
+            } else if (unitB < unitA) {
+                lblGanador.innerHTML = "🏆 ¡Te conviene más la Opción B!";
+            } else {
+                lblGanador.innerHTML = "🤝 ¡Ambas cuestan exactamente lo mismo!";
+            }
+        }
+
+        function calcularCuentas() {
+            const consumo = parseFloat(document.getElementById('consumoTotal').value) || 0;
+            const personas = parseInt(document.getElementById('numPersonas').value) || 1;
+            const propinaPorc = parseFloat(document.getElementById('porcentajePropina').value) || 0;
+
+            const montoPropina = consumo * (propinaPorc / 100);
+            const totalConPropina = consumo + montoPropina;
+            const porPersona = personas > 0 ? (totalConPropina / personas) : 0;
+
+            document.getElementById('txtTotalConPropina').innerText = `$${totalConPropina.toFixed(2)}`;
+            document.getElementById('txtPagoPorPersona').innerText = `$${porPersona.toFixed(2)}`;
+        }
+
+        // Lógica del Diario de Bolsillo (Gastos Diarios)
+        let listaGastos = [];
+
+        function agregarGasto() {
+            const desc = document.getElementById('gastoDesc').value.trim();
+            const monto = parseFloat(document.getElementById('gastoMonto').value) || 0;
+
+            if (desc === "" || monto <= 0) {
+                alert("Por favor ingresa una descripción y un monto válido.");
+                return;
+            }
+
+            listaGastos.push({ descripcion: desc, valor: monto });
+            document.getElementById('gastoDesc').value = "";
+            document.getElementById('gastoMonto').value = "";
+            actualizarListaGastos();
+        }
+
+        function actualizarListaGastos() {
+            const contenedor = document.getElementById('listaGastosUI');
+            let totalGeneral = 0;
+
+            if (listaGastos.length === 0) {
+                contenedor.innerHTML = "No hay gastos registrados hoy.";
+                document.getElementById('txtTotalGastos').innerText = "$0.00";
+                return;
+            }
+
+            let html = "";
+            listaGastos.forEach((gasto, index) => {
+                totalGeneral += gasto.valor;
+                html += `<div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span>${gasto.descripcion}</span>
+                            <span style="font-weight: bold; color: #fff;">$${gasto.valor.toFixed(2)}</span>
+                         </div>`;
+            });
+
+            contenedor.innerHTML = html;
+            document.getElementById('txtTotalGastos').innerText = `$${totalGeneral.toFixed(2)}`;
+        }
+
+        function limpiarGastos() {
+            listaGastos = [];
+            actualizarListaGastos();
+        }
+
+        function copiarGastos() {
+            if (listaGastos.length === 0) {
+                alert("No hay gastos para copiar.");
+                return;
+            }
+
+            let totalGeneral = 0;
+            let texto = `📝 *DIARIO DE GASTOS - VERIFIOS*\n----------------------------------------\n`;
+            listaGastos.forEach(g => {
+                totalGeneral += g.valor;
+                texto += `• ${g.descripcion}: $${g.valor.toFixed(2)}\n`;
+            });
+            texto += `----------------------------------------\n💰 *Total Gastado: $${totalGeneral.toFixed(2)}*\nverifios.verificarecuador.com`;
+
+            navigator.clipboard.writeText(texto).then(() => {
+                alert('¡Resumen de gastos copiado al portapapeles!');
+            }).catch(err => {
+                alert('No se pudo copiar automáticamente.');
+            });
+        }
+
+        function generarEfectoWow() {
+            const totalCaja = document.getElementById('txtTotalCaja').innerText;
+            const brutoCaja = document.getElementById('txtBrutoCaja').innerText;
+            const fondoCaja = document.getElementById('txtFondoCaja').innerText;
+            
+            let nombreNegocio = document.getElementById('nombreNegocioInput').value.trim();
+            if (nombreNegocio === "") {
+                nombreNegocio = "Mi Negocio";
+            }
+
+            const fechaActual = new Date().toLocaleDateString();
+            const horaActual = new Date().toLocaleTimeString();
+
+            const ticketHTML = `
+                📅 <b>Fecha:</b> ${fechaActual} - ${horaActual}<br>
+                📍 <b>Local:</b> ${nombreNegocio}<br>
+                ----------------------------------------<br>
+                💵 Efectivo Contado: ${brutoCaja}<br>
+                🔹 Menos Fondo Inicial: ${fondoCaja}<br>
+                ----------------------------------------<br>
+                💰 <b>Venta Neta Efectivo:</b> ${totalCaja}<br>
+                ----------------------------------------<br>
+            `;
+
+            document.getElementById('contenidoTicket').innerHTML = ticketHTML;
+            
+            const ticketDiv = document.getElementById('ticketWow');
+            ticketDiv.style.display = 'block';
+            ticketDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copiarTicket() {
+            const nombreNegocio = document.getElementById('nombreNegocioInput').value.trim() || "Mi Negocio";
+            const totalCaja = document.getElementById('txtTotalCaja').innerText;
+            const brutoCaja = document.getElementById('txtBrutoCaja').innerText;
+            const fondoCaja = document.getElementById('txtFondoCaja').innerText;
+            const fechaActual = new Date().toLocaleDateString();
+            const horaActual = new Date().toLocaleTimeString();
+
+            const textoCompleto = `🧾 *REPORTE VERIFIOS*\n` +
+                                  `📅 Fecha: ${fechaActual} - ${horaActual}\n` +
+                                  `📍 Local: ${nombreNegocio}\n` +
+                                  `----------------------------------------\n` +
+                                  `💵 Efectivo Contado: ${brutoCaja}\n` +
+                                  `🔹 Menos Fondo Inicial: ${fondoCaja}\n` +
+                                  `----------------------------------------\n` +
+                                  `💰 Venta Neta Efectivo: ${totalCaja}\n` +
+                                  `----------------------------------------\n` +
+                                  `⚡ Tu ecosistema de gestión: simple, inteligente y a tu medida.\n` +
+                                  `VerifiOS\n` +
+                                  `verifios.verificarecuador.com`;
+            
+            navigator.clipboard.writeText(textoCompleto).then(() => {
+                alert('¡Ticket copiado al portapapeles! Ya puedes pegarlo en WhatsApp.');
+            }).catch(err => {
+                alert('No se pudo copiar automáticamente.');
+            });
+        }
+
+        function copiarPrecio() {
+            const costo = document.getElementById('costoBase').value || "0.00";
+            const sinIva = document.getElementById('txtPrecioSinIva').innerText;
+            const iva = document.getElementById('txtIvaCalculado').innerText;
+            const final = document.getElementById('txtPrecioFinal').innerText;
+
+            const textoPrecio = `📈 *COTIZACIÓN - VERIFIOS*\n` +
+                                `----------------------------------------\n` +
+                                `💵 Base: $${costo}\n` +
+                                `🔹 Precio sin IVA: ${sinIva}\n` +
+                                `🔹 IVA (15%): ${iva}\n` +
+                                `----------------------------------------\n` +
+                                `🚀 *Precio Final: ${final}*\n` +
+                                `⚡ Tu ecosistema de gestión: simple, inteligente y a tu medida.\n` +
+                                `verifios.verificarecuador.com`;
+
+            navigator.clipboard.writeText(textoPrecio).then(() => {
+                alert('¡Cotización copiada al portapapeles!');
+            }).catch(err => {
+                alert('No se pudo copiar automáticamente.');
+            });
+        }
+
+        function copiarCuentas() {
+            const consumo = document.getElementById('consumoTotal').value || "0.00";
+            const personas = document.getElementById('numPersonas').value || "1";
+            const totalPropina = document.getElementById('txtTotalConPropina').innerText;
+            const porPersona = document.getElementById('txtPagoPorPersona').innerText;
+
+            const textoCuentas = `👥 *DIVISIÓN DE CUENTA - VERIFIOS*\n` +
+                                 `----------------------------------------\n` +
+                                 `🧾 Consumo Total: $${consumo}\n` +
+                                 `👥 Personas: ${personas}\n` +
+                                 `🔹 Total con Propina: ${totalPropina}\n` +
+                                 `----------------------------------------\n` +
+                                 `💳 *A cada uno le toca pagar: ${porPersona}*\n` +
+                                 `⚡ Tu ecosistema de gestión: simple, inteligente y a tu medida.\n` +
+                                 `verifios.verificarecuador.com`;
+
+            navigator.clipboard.writeText(textoCuentas).then(() => {
+                alert('¡División de cuenta copiada al portapapeles!');
+            }).catch(err => {
+                alert('No se pudo copiar automáticamente.');
+            });
+        }
+
+// Lógica para el botón de instalación de la Web App
+let deferredPrompt;
+const btnInstalar = document.getElementById('btnInstalarApp');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Previene que el navegador muestre su banner automático por defecto
+    e.preventDefault();
+    deferredPrompt = e;
+    
+    // Muestra nuestro botón personalizado en la barra de navegación
+    if (btnInstalar) {
+        btnInstalar.style.display = 'inline-flex';
+    }
+});
+
+if (btnInstalar) {
+    btnInstalar.addEventListener('click', async () => {
+        if (!deferredPrompt) return;
+        
+        // Muestra el aviso nativo de instalación
+        deferredPrompt.prompt();
+        
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+            console.log('El usuario instaló la Web App');
+        }
+        
+        deferredPrompt = null;
+        btnInstalar.style.display = 'none';
+    });
+}
+
+// Registrar el Service Worker para habilitar la PWA
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+            .then(reg => console.log('Service Worker registrado con éxito:', reg.scope))
+            .catch(err => console.log('Error al registrar el Service Worker:', err));
+    });
+}
+
+
+let currentCategory = 'peso';
+    let invertedDirection = false;
+
+   function toggleVerifiOSMenu() {
+    const menu = document.getElementById('verifios-modal-menu'); // Asegúrate de que este sea el ID de tu modal flotante
+    const label = document.getElementById('float-label');
+    
+    // Verificamos si el menú está abierto actualmente
+    const isOpen = (menu.style.display === 'block');
+
+    if (isOpen) {
+        // Si está abierto, lo cerramos y volvemos a mostrar la etiqueta
+        menu.style.display = 'none';
+        label.style.display = 'block';
+    } else {
+        // Si está cerrado, abrimos el menú y ocultamos la etiqueta para que no estorbe
+        menu.style.display = 'block';
+        label.style.display = 'none';
+    }
+}
+
+    function toggleMiniCalc() {
+        const calc = document.getElementById('verifios-calc-modal');
+        const isShow = (calc.style.display === 'block');
+        calc.style.display = isShow ? 'none' : 'block';
+        document.getElementById('verifios-history-modal').style.display = 'none';
+        document.getElementById('verifios-modal-menu').style.display = 'none';
+    }
+
+    function toggleHistoryModal() {
+        const hist = document.getElementById('verifios-history-modal');
+        const isShow = (hist.style.display === 'block');
+        hist.style.display = isShow ? 'none' : 'block';
+        document.getElementById('verifios-calc-modal').style.display = 'none';
+        document.getElementById('verifios-modal-menu').style.display = 'none';
+    }
+
+    function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                alert(`Error al activar pantalla completa: ${err.message}`);
+            });
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+    }
+
+    function switchCalcMode() {
+        const std = document.getElementById('mode-standard');
+        const conv = document.getElementById('mode-converter');
+        const title = document.getElementById('calc-title');
+        if (std.style.display === 'none') {
+            std.style.display = 'block';
+            conv.style.display = 'none';
+            title.innerText = "🧮 Calculadora";
+        } else {
+            std.style.display = 'none';
+            conv.style.display = 'block';
+            title.innerText = "⚖️ Conversor";
+            changeConvCategory('peso');
+        }
+    }
+
+    function changeConvCategory(cat) {
+        currentCategory = cat;
+        invertedDirection = false;
+        
+        const btnPeso = document.getElementById('btn-cat-peso');
+        const btnLong = document.getElementById('btn-cat-longitud');
+        const btnTemp = document.getElementById('btn-cat-temperatura');
+
+        [btnPeso, btnLong, btnTemp].forEach(b => {
+            b.style.background = "#111827";
+            b.style.color = "#94a3b8";
+            b.style.border = "1px solid #1f2937";
+        });
+
+        let activeBtn = document.getElementById(`btn-cat-${cat}`);
+        activeBtn.style.background = "#6366f1";
+        activeBtn.style.color = "#fff";
+        activeBtn.style.border = "none";
+
+        updateLabels();
+        resetUniversalConverter();
+    }
+
+    function invertConverter() {
+        invertedDirection = !invertedDirection;
+        updateLabels();
+        let val1 = document.getElementById('conv-val1').value;
+        document.getElementById('conv-val1').value = document.getElementById('conv-val2').value;
+        document.getElementById('conv-val2').value = val1;
+    }
+
+    function updateLabels() {
+        const l1 = document.getElementById('label-unit1');
+        const l2 = document.getElementById('label-unit2');
+
+        if (currentCategory === 'peso') {
+            l1.innerText = !invertedDirection ? "Libras (lb)" : "Kilogramos (kg)";
+            l2.innerText = !invertedDirection ? "Kilogramos (kg)" : "Libras (lb)";
+        } else if (currentCategory === 'longitud') {
+            l1.innerText = !invertedDirection ? "Metros (m)" : "Centímetros (cm)";
+            l2.innerText = !invertedDirection ? "Centímetros (cm)" : "Metros (m)";
+        } else if (currentCategory === 'temperatura') {
+            l1.innerText = !invertedDirection ? "Celsius (°C)" : "Fahrenheit (°F)";
+            l2.innerText = !invertedDirection ? "Fahrenheit (°F)" : "Celsius (°C)";
+        }
+    }
+
+    function convertUniversal(source) {
+        let val1 = document.getElementById('conv-val1');
+        let val2 = document.getElementById('conv-val2');
+
+        if (currentCategory === 'peso') {
+            if (!invertedDirection) {
+                if (source === 1) {
+                    let lb = parseFloat(val1.value);
+                    val2.value = isNaN(lb) ? '' : (lb / 2.20462).toFixed(2);
+                } else {
+                    let kg = parseFloat(val2.value);
+                    val1.value = isNaN(kg) ? '' : (kg * 2.20462).toFixed(2);
+                }
+            } else {
+                if (source === 1) {
+                    let kg = parseFloat(val1.value);
+                    val2.value = isNaN(kg) ? '' : (kg * 2.20462).toFixed(2);
+                } else {
+                    let lb = parseFloat(val2.value);
+                    val1.value = isNaN(lb) ? '' : (lb / 2.20462).toFixed(2);
+                }
+            }
+        } else if (currentCategory === 'longitud') {
+            if (!invertedDirection) {
+                if (source === 1) {
+                    let m = parseFloat(val1.value);
+                    val2.value = isNaN(m) ? '' : (m * 100).toFixed(2);
+                } else {
+                    let cm = parseFloat(val2.value);
+                    val1.value = isNaN(cm) ? '' : (cm / 100).toFixed(2);
+                }
+            } else {
+                if (source === 1) {
+                    let cm = parseFloat(val1.value);
+                    val2.value = isNaN(cm) ? '' : (cm / 100).toFixed(2);
+                } else {
+                    let m = parseFloat(val2.value);
+                    val1.value = isNaN(m) ? '' : (m * 100).toFixed(2);
+                }
+            }
+        } else if (currentCategory === 'temperatura') {
+            if (!invertedDirection) {
+                if (source === 1) {
+                    let c = parseFloat(val1.value);
+                    val2.value = isNaN(c) ? '' : ((c * 9/5) + 32).toFixed(2);
+                } else {
+                    let f = parseFloat(val2.value);
+                    val1.value = isNaN(f) ? '' : ((f - 32) * 5/9).toFixed(2);
+                }
+            } else {
+                if (source === 1) {
+                    let f = parseFloat(val1.value);
+                    val2.value = isNaN(f) ? '' : ((f - 32) * 5/9).toFixed(2);
+                } else {
+                    let c = parseFloat(val2.value);
+                    val1.value = isNaN(c) ? '' : ((c * 9/5) + 32).toFixed(2);
+                }
+            }
+        }
+    }
+
+    function resetUniversalConverter() {
+        document.getElementById('conv-val1').value = '';
+        document.getElementById('conv-val2').value = '';
+    }
+
+    let calcVal = "0";
+    function calcPress(val) {
+        if (calcVal === "0" && val !== '.') {
+            calcVal = val;
+        } else {
+            calcVal += val;
+        }
+        document.getElementById('calc-screen').value = calcVal;
+    }
+
+    function calcClear() {
+        calcVal = "0";
+        document.getElementById('calc-screen').value = calcVal;
+    }
+
+    function calcCalculate() {
+        try {
+            let result = Function('"use strict";return (' + calcVal + ')')();
+            result = Math.round(result * 100) / 100;
+            addHistoryItem(`${calcVal} = ${result}`);
+            calcVal = String(result);
+            document.getElementById('calc-screen').value = calcVal;
+        } catch (e) {
+            document.getElementById('calc-screen').value = "Error";
+            calcVal = "0";
+        }
+    }
+
+    function addHistoryItem(text) {
+        const list = document.getElementById('verifios-history-list');
+        if (list.innerHTML.includes("Sin actividad reciente")) {
+            list.innerHTML = "";
+        }
+        const item = document.createElement('div');
+        item.style.cssText = "background: #111827; padding: 6px 8px; border-radius: 6px; border: 1px solid #1f2937; color: #e2e8f0; display: flex; justify-content: space-between; align-items: center;";
+        item.innerHTML = `<span>${text}</span>`;
+        list.prepend(item);
+    }
+
+    </script>
+
+<footer style="width: 100%; padding: 60px 20px; color: #94a3b8; font-size: 0.95em; border-top: 3px solid #6366f1; margin-top: 60px; background-color: #090d16; display: flex; flex-direction: column; align-items: center; text-align: center; box-sizing: border-box;">
+    <div style="width: 100%; max-width: 600px;">
+        
+        <!-- LOGO MÁS GRANDE EN EL FOOTER -->
+        <div style="margin-bottom: 25px;">
+            <img src="img/logoverisinfondo.png" alt="Logo VerifiOS" style="height: 120px; width: auto; display: block; margin: 0 auto;">
+        </div>
+        
+        <p style="margin: 0 0 25px 0; font-style: italic; color: #818cf8;">"Tu ecosistema de gestión: simple, inteligente y a tu medida." 🚀</p>
+
+       
+        
+        <p style="margin: 10px 0; color: #cbd5e1;">📩 ¿Contacto directo o soporte? Escríbenos a: <br>
+            <a href="mailto:contacto@verificarecuador.com" style="color: #818cf8; font-weight: bold; text-decoration: none; font-size: 1.1em;">contacto@verificarecuador.com</a>
+        </p>
+
+        <!-- Redes Sociales -->
+        <div style="margin: 25px 0;">
+            <a href="https://www.facebook.com/profile.php?id=61594509927384" target="_blank" title="Visítanos en Facebook" style="text-decoration: none; color: #1877F2; display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; background: #111827; border-radius: 50px; border: 1px solid #1f2937; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <i class="fa-brands fa-facebook" style="font-size: 1.5rem;"></i>
+                <span style="font-weight: bold; color: #ffffff;">VerifiOS</span>
+            </a>
+        </div>
+
+        <!-- Detalles técnicos / Confianza -->
+        <div style="margin: 25px 0; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; font-size: 0.85rem; color: #94a3b8;">
+            <span>⚡ Python & Flask Backend</span>
+            <span>•</span>
+            <span>☁️ Entornos Cloud Optimizados</span>
+            <span>•</span>
+            <span>🔒 Arquitectura Segura</span>
+        </div>
+
+        <!-- Aviso Legal / Institucional -->
+        <p style="margin-top: 30px; font-size: 0.8em; color: #64748b; line-height: 1.4; text-align: justify; border-top: 1px solid #1f2937; padding-top: 20px;">
+            <strong>⚖️ Aviso legal:</strong> VerifiOS centraliza soluciones de gestión comercial, vehicular y utilidades operativas. Las herramientas provistas se ofrecen bajo estándares de alta disponibilidad y optimización local. El uso de las mismas está sujeto a los términos de servicio de cada módulo.
+        </p>
+
+        <!-- Footer Copyright -->
+        <div style="margin-top: 30px; text-align: center; font-size: 13px; color: #64748b;">
+            <p style="margin: 5px 0;">&copy; 2026 VerifiOS. Ecosistema digital y de software en Ecuador.</p>
+            <p style="margin: 5px 0;">
+                🇪🇨 Operado desde <strong>Cuenca, Ecuador</strong>.
+            </p>
+        </div>
+    </div>
+</footer>
+
+
+<!-- CONTENEDOR PARA EL BOTÓN Y SU ETIQUETA -->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 6px;">
+    
+    <!-- ETIQUETA CON UN ID PARA PODER OCULTARLA -->
+    <div id="float-label" style="background: #111827; color: #ffffff; padding: 5px 10px; border-radius: 6px; font-size: 0.75em; font-family: sans-serif; border: 1px solid #1f2937; box-shadow: 0 4px 12px rgba(0,0,0,0.5); white-space: nowrap; transition: opacity 0.2s ease;">
+        ⚡ VerifiOS Menú
+    </div>
+
+    <!-- BOTÓN FLOTANTE PRINCIPAL -->
+    <div id="verifios-float-btn" onclick="toggleVerifiOSMenu()" style="background: linear-gradient(135deg, #6366f1, #4f46e5); color: #ffffff; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; cursor: pointer; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);">
+        ⚡
+    </div>
+
+</div>
+
+
+<!-- BOTÓN FLOTANTE PRINCIPAL (RAYO VERIFIOS) -->
+<div id="verifios-float-btn" onclick="toggleVerifiOSMenu()" style="position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, #6366f1, #4f46e5); color: #ffffff; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; cursor: pointer; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4); z-index: 9999; transition: transform 0.2s ease;">
+    ⚡
+</div>
+
+<!-- MENÚ DESPLEGABLE FLOTANTE -->
+<div id="verifios-modal-menu" style="display: none; position: fixed; bottom: 85px; right: 20px; width: 280px; max-width: calc(100vw - 30px); background: #090d16; border: 1px solid #1f2937; border-radius: 16px; padding: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.6); z-index: 9998; box-sizing: border-box;">
+    
+    <!-- Encabezado del menú -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #1f2937; padding-bottom: 8px;">
+        <span style="font-weight: bold; color: #ffffff; font-size: 1em;">⚡ VerifiOS Sistemas</span>
+        <button onclick="toggleVerifiOSMenu()" style="background: none; border: none; color: #94a3b8; font-size: 16px; cursor: pointer;">✕</button>
+    </div>
+
+    <!-- Lista de Aplicaciones -->
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+        <a href="https://verificarecuador.com" target="_blank" style="text-decoration: none; background: #111827; padding: 8px 10px; border-radius: 8px; color: #6366f1; font-weight: bold; font-size: 0.85em; display: flex; align-items: center; gap: 8px; border: 1px solid #1f2937;">
+            🚗 <span>VerifiCar Ecuador</span>
+        </a>
+        <a href="https://plus.verificarecuador.com" target="_blank" style="text-decoration: none; background: #111827; padding: 8px 10px; border-radius: 8px; color: #22c55e; font-weight: bold; font-size: 0.85em; display: flex; align-items: center; gap: 8px; border: 1px solid #1f2937;">
+            🍔 <span>VerifiCar Plus</span>
+        </a>
+        <a href="https://pedidosplus.netlify.app/index.html" target="_blank" style="text-decoration: none; background: #111827; padding: 8px 10px; border-radius: 8px; color: #f59e0b; font-weight: bold; font-size: 0.85em; display: flex; align-items: center; gap: 8px; border: 1px solid #1f2937;">
+            📦 <span>Deliverys</span>
+        </a>
+        <a href="https://verificarmarket.onrender.com/" target="_blank" style="text-decoration: none; background: #111827; padding: 8px 10px; border-radius: 8px; color: #3b82f6; font-weight: bold; font-size: 0.85em; display: flex; align-items: center; gap: 8px; border: 1px solid #1f2937;">
+            🛒 <span>Market Autos</span>
+        </a>
+    </div>
+
+    <!-- UTILIDADES RÁPIDAS -->
+    <div style="margin-top: 12px; border-top: 1px solid #1f2937; padding-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+        <button onclick="toggleMiniCalc()" style="background: #111827; border: 1px solid #1f2937; color: #e2e8f0; padding: 7px; border-radius: 8px; font-size: 0.75em; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+            🧮 <span>Calculadora</span>
+        </button>
+        <button onclick="toggleHistoryModal()" style="background: #111827; border: 1px solid #1f2937; color: #e2e8f0; padding: 7px; border-radius: 8px; font-size: 0.75em; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+            📋 <span>Historial</span>
+        </button>
+        <button onclick="toggleFullScreen()" style="grid-column: span 2; background: #111827; border: 1px solid #1f2937; color: #e2e8f0; padding: 7px; border-radius: 8px; font-size: 0.75em; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+            🖥️ <span>Pantalla Completa</span>
+        </button>
+    </div>
+
+    <!-- WhatsApp -->
+    <div style="margin-top: 12px; border-top: 1px solid #1f2937; padding-top: 10px;">
+        <a href="https://wa.me/593992661432?text=Hola,%20vengo%20de%20la%20webapp%20de%20VerifiOS%20y%20quiero%20más%20información" target="_blank" style="text-decoration: none; background: #22c55e; color: #ffffff; padding: 8px; border-radius: 8px; display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: bold; font-size: 0.85em; box-shadow: 0 2px 5px rgba(34, 197, 94, 0.3);">
+            <svg viewBox="0 0 32 32" width="16" height="16" fill="#ffffff">
+                <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.808 8.008-2.101c2.378 1.296 5.092 1.983 7.992 1.983 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.433 0-4.811-0.654-6.914-1.892l-0.496-0.294-5.111 1.341 1.365-4.978-0.322-0.513c-1.342-2.135-2.051-4.607-2.051-7.142 0-7.364 5.991-13.355 13.355-13.355s13.355 5.991 13.355 13.355c0 7.364-5.991 13.355-13.355 13.355zM22.954 19.535c-0.327-0.164-1.936-0.955-2.236-1.064s-0.518-0.164-0.736 0.164c-0.218 0.327-0.845 1.064-1.036 1.282s-0.382 0.255-0.709 0.091c-0.327-0.164-1.382-0.509-2.636-1.627-0.973-0.864-1.627-1.927-1.818-2.255s-0.018-0.5 0.145-0.664c0.15-0.15 0.327-0.382 0.491-0.573s0.218-0.327 0.327-0.545c0.109-0.218 0.055-0.409-0.027-0.573s-0.736-1.773-1.009-2.427c-0.264-0.636-0.532-0.55-0.736-0.56-0.191-0.009-0.409-0.009-0.627-0.009s-0.573 0.082-0.873 0.409-0.3 0.327-1.145 1.118-1.145 2.727s1.173 3.145 1.336 3.364c0.164 0.218 2.309 3.527 5.591 4.945 0.782 0.336 1.391 0.536 1.868 0.686 0.786 0.25 1.5 0.214 2.068 0.13 0.632-0.095 1.936-0.791 2.209-1.555s0.273-1.409 0.191-1.555c-0.082-0.145-0.3-0.232-0.627-0.395z"></path>
+            </svg>
+            <span>Escríbenos por WhatsApp</span>
+        </a>
+    </div>
+</div>
+
+<!-- MINI CALCULADORA Y CONVERSOR COMPLETO -->
+<div id="verifios-calc-modal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 260px; max-width: 90vw; background: #090d16; border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.7); z-index: 10000; box-sizing: border-box;">
+    
+    <!-- Encabezado con selector de modo -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #1f2937; padding-bottom: 6px;">
+        <span id="calc-title" style="font-weight: bold; color: #ffffff; font-size: 0.9em;">🧮 Calculadora</span>
+        <div style="display: flex; gap: 4px; align-items: center;">
+            <button onclick="switchCalcMode()" title="Cambiar a Conversor" style="background: #1f2937; border: none; color: #38bdf8; font-size: 11px; padding: 3px 6px; border-radius: 4px; cursor: pointer; font-weight: bold;">⚖️ Conv</button>
+            <button onclick="toggleMiniCalc()" style="background: none; border: none; color: #94a3b8; font-size: 14px; cursor: pointer;">✕</button>
+        </div>
+    </div>
+
+    <!-- MODO 1: CALCULADORA ESTÁNDAR -->
+    <div id="mode-standard">
+        <input type="text" id="calc-screen" readonly style="width: 100%; background: #111827; border: 1px solid #1f2937; color: #ffffff; padding: 6px; border-radius: 6px; font-size: 1em; text-align: right; margin-bottom: 8px; box-sizing: border-box;" value="0">
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;">
+            <button onclick="calcClear()" style="background: #1f2937; border: none; color: #ef4444; padding: 8px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.9em;">C</button>
+            <button onclick="calcPress('/')" style="background: #1f2937; border: none; color: #6366f1; padding: 8px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.9em;">÷</button>
+            <button onclick="calcPress('*')" style="background: #1f2937; border: none; color: #6366f1; padding: 8px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.9em;">×</button>
+            <button onclick="calcPress('-')" style="background: #1f2937; border: none; color: #6366f1; padding: 8px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.9em;">-</button>
+            <button onclick="calcPress('7')" style="background: #111827; border: none; color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 0.9em;">7</button>
+            <button onclick="calcPress('8')" style="background: #111827; border: none; color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 0.9em;">8</button>
+            <button onclick="calcPress('9')" style="background: #111827; border: none; color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 0.9em;">9</button>
+            <button onclick="calcPress('+')" style="background: #1f2937; border: none; color: #6366f1; padding: 8px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.9em;">+</button>
+            <button onclick="calcPress('4')" style="background: #111827; border: none; color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 0.9em;">4</button>
+            <button onclick="calcPress('5')" style="background: #111827; border: none; color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 0.9em;">5</button>
+            <button onclick="calcPress('6')" style="background: #111827; border: none; color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 0.9em;">6</button>
+            <button onclick="calcCalculate()" style="grid-row: span 2; background: #6366f1; border: none; color: #fff; padding: 8px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.9em;">=</button>
+            <button onclick="calcPress('1')" style="background: #111827; border: none; color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 0.9em;">1</button>
+            <button onclick="calcPress('2')" style="background: #111827; border: none; color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 0.9em;">2</button>
+            <button onclick="calcPress('3')" style="background: #111827; border: none; color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 0.9em;">3</button>
+            <button onclick="calcPress('0')" style="grid-column: span 2; background: #111827; border: none; color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 0.9em;">0</button>
+            <button onclick="calcPress('.')" style="background: #111827; border: none; color: #fff; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 0.9em;">.</button>
+        </div>
+    </div>
+
+    <!-- MODO 2: CONVERSOR (Peso, Longitud y Temperatura con Invertir) -->
+    <div id="mode-converter" style="display: none; font-size: 0.8em; color: #e2e8f0;">
+        <!-- Selector de magnitud -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-bottom: 8px;">
+            <button type="button" id="btn-cat-peso" onclick="changeConvCategory('peso')" style="background: #6366f1; border: none; color: #fff; padding: 5px 2px; border-radius: 4px; font-size: 0.7em; font-weight: bold; cursor: pointer;">⚖️ Peso</button>
+            <button type="button" id="btn-cat-longitud" onclick="changeConvCategory('longitud')" style="background: #111827; border: 1px solid #1f2937; color: #94a3b8; padding: 5px 2px; border-radius: 4px; font-size: 0.7em; font-weight: bold; cursor: pointer;">📏 Long</button>
+            <button type="button" id="btn-cat-temperatura" onclick="changeConvCategory('temperatura')" style="background: #111827; border: 1px solid #1f2937; color: #94a3b8; padding: 5px 2px; border-radius: 4px; font-size: 0.7em; font-weight: bold; cursor: pointer;">🌡️ Temp</button>
+        </div>
+
+        <!-- Campos de conversión e botón invertir -->
+        <div style="display: flex; flex-direction: column; gap: 6px; position: relative;">
+            <div>
+                <label id="label-unit1" style="color: #94a3b8; display: block; margin-bottom: 2px;">Libras (lb)</label>
+                <input type="number" id="conv-val1" oninput="convertUniversal(1)" placeholder="0" style="width: 100%; background: #111827; border: 1px solid #1f2937; color: #ffffff; padding: 6px; border-radius: 6px; box-sizing: border-box;">
+            </div>
+
+            <!-- Botón Invertir Dirección -->
+            <div style="display: flex; justify-content: center; margin: -2px 0;">
+                <button type="button" onclick="invertConverter()" title="Invertir dirección" style="background: #1f2937; border: 1px solid #374151; color: #38bdf8; width: 28px; height: 28px; border-radius: 50%; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">🔄</button>
+            </div>
+
+            <div>
+                <label id="label-unit2" style="color: #94a3b8; display: block; margin-bottom: 2px;">Kilogramos (kg)</label>
+                <input type="number" id="conv-val2" oninput="convertUniversal(2)" placeholder="0" style="width: 100%; background: #111827; border: 1px solid #1f2937; color: #ffffff; padding: 6px; border-radius: 6px; box-sizing: border-box;">
+            </div>
+        </div>
+
+        <button onclick="resetUniversalConverter()" style="width: 100%; background: #1f2937; border: none; color: #ef4444; padding: 6px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 8px;">Limpiar</button>
+    </div>
+</div>
+
+<!-- MODAL DE HISTORIAL RECIENTE -->
+<div id="verifios-history-modal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 260px; max-width: 90vw; background: #090d16; border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.7); z-index: 10000; box-sizing: border-box;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #1f2937; padding-bottom: 6px;">
+        <span style="font-weight: bold; color: #ffffff; font-size: 0.9em;">📋 Últimos Registros</span>
+        <button onclick="toggleHistoryModal()" style="background: none; border: none; color: #94a3b8; font-size: 14px; cursor: pointer;">✕</button>
+    </div>
+    <div id="verifios-history-list" style="max-height: 150px; overflow-y: auto; display: flex; flex-direction: column; gap: 5px; font-size: 0.8em; color: #94a3b8;">
+        <div style="background: #111827; padding: 6px 8px; border-radius: 6px; border: 1px solid #1f2937;">Sin actividad reciente.</div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
