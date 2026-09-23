@@ -475,7 +475,7 @@
         <div>
             <h3>🌐 Landing Page / Web Profesional</h3>
             <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 5px;">Ideal para profesionales y marcas personales.</p>
-            <div class="price-amount">$45</div>
+            <div class="price-amount">$90</div>
             <ul>
                 <li>✅ 1 Interfaz optimizada para móviles</li>
                 <li>✅ Botón de WhatsApp flotante</li>
@@ -492,7 +492,7 @@
         <div>
             <h3>📦 Catálogo Digital / Sistema Pro</h3>
             <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 5px;">Pensado para comercios y tiendas con stock.</p>
-            <div class="price-amount">$85</div>
+            <div class="price-amount">$160</div>
             <ul>
                 <li>✅ Sistema de productos y secciones (hasta 25 ítems)</li>
                 <li>✅ Control básico de inventario local</li>
@@ -509,7 +509,7 @@
         <div>
             <h3>⚡ POS / Restaurantes / Web App</h3>
             <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 5px;">Solución robusta para negocios en marcha.</p>
-            <div class="price-amount">$130</div>
+            <div class="price-amount">$250</div>
             <ul>
                 <li>✅ Arquitectura completa a la medida</li>
                 <li>✅ Lógica de negocio y panel de administración</li>
@@ -911,26 +911,26 @@ function analizarIdeaYCotizar() {
         feedback.style.display = "block";
         // Palabras clave para Restaurantes / Sistemas POS / Pedidos
         if (texto.includes('restaurante') || texto.includes('comida') || texto.includes('picanteria') || texto.includes('picantería') || texto.includes('menu') || texto.includes('menú') || texto.includes('pedidos') || texto.includes('pos')) {
-            selectProyecto.value = "130"; // Sistema POS/Restaurantes
-            aiText.innerText = "Recomendado: Sistema POS / Restaurante ($130)";
+            selectProyecto.value = "250"; // Sistema POS/Restaurantes actualizado
+            aiText.innerText = "Recomendado: Sistema POS / Restaurante ($250)";
             sectorDetectado = "restaurante";
         }
         // Palabras clave para Tiendas / Catálogos / Ropa / Productos
         else if (texto.includes('tienda') || texto.includes('ropa') || texto.includes('productos') || texto.includes('catalogo') || texto.includes('catálogo') || texto.includes('vender') || texto.includes('stock')) {
-            selectProyecto.value = "85"; // Catálogo Digital
-            aiText.innerText = "Recomendado: Catálogo Digital de Productos ($85)";
+            selectProyecto.value = "160"; // Catálogo Digital actualizado
+            aiText.innerText = "Recomendado: Catálogo Digital de Productos ($160)";
             sectorDetectado = "tienda";
         }
         else {
-            selectProyecto.value = "45"; // Landing Page
-            aiText.innerText = "Recomendado: Landing Page / Web Profesional ($45)";
+            selectProyecto.value = "90"; // Landing Page actualizada
+            aiText.innerText = "Recomendado: Landing Page / Web Profesional ($90)";
             sectorDetectado = "landing";
         }
     } else {
         feedback.style.display = "none";
         // Si no hay texto libre, basarse en lo que el usuario seleccionó manualmente en el select
-        if (selectProyecto.value == "130") sectorDetectado = "restaurante";
-        else if (selectProyecto.value == "85") sectorDetectado = "tienda";
+        if (selectProyecto.value == "130" || selectProyecto.value == "250") sectorDetectado = "restaurante";
+        else if (selectProyecto.value == "85" || selectProyecto.value == "160") sectorDetectado = "tienda";
         else sectorDetectado = "landing";
     }
 
@@ -987,11 +987,11 @@ function calcularPrecioPro() {
     let costoSlider = 0;
     let textoSlider = `Volumen: Hasta ${valorSlider} ítems`;
     if (valorSlider > 20 && valorSlider <= 50) {
-        costoSlider = 20;
+        costoSlider = 45; // Subido de precio
     } else if (valorSlider > 50 && valorSlider < 100) {
-        costoSlider = 40;
+        costoSlider = 80; // Subido de precio
     } else if (valorSlider >= 100) {
-        costoSlider = 70;
+        costoSlider = 130; // Subido de precio
         textoSlider = "Volumen: Más de 100 ítems";
     }
 
@@ -1002,11 +1002,11 @@ function calcularPrecioPro() {
 
     if (extraDominio.checked) {
         costoExtras += parseInt(extraDominio.value);
-        extrasTexto.push("Asesoría de Dominio Pro (+$15)");
+        extrasTexto.push("Asesoría de Dominio Pro");
     }
     if (extraBot.checked) {
         costoExtras += parseInt(extraBot.value);
-        extrasTexto.push("Automatización de WhatsApp (+$25)");
+        extrasTexto.push("Automatización de WhatsApp");
     }
    
     let totalFinal = precioBase + costoSlider + costoExtras;
@@ -1019,7 +1019,7 @@ function calcularPrecioPro() {
     }
 
     mensaje += `🔹 *Plataforma estimada:* ${textoProyecto}\n` +
-               `🔹 *${textoSlider}*` + (costoSlider > 0 ? ` (+$${costoSlider})` : ``) + `\n`;
+                 `🔹 *${textoSlider}*` + (costoSlider > 0 ? ` (+$${costoSlider})` : ``) + `\n`;
     if (extrasTexto.length > 0) {
         mensaje += `🔹 *Extras:* \n- ${extrasTexto.join('\n- ')}\n`;
     }
