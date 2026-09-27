@@ -232,23 +232,18 @@
     </button>
 
   <!-- Enlaces de navegación -->
-<div id="navLinks" class="flex items-center gap-6">
-    <a href="#cotizador-section" onclick="cerrarMenuMobile()" class="text-slate-600 hover:text-slate-900 text-sm font-semibold transition">🧮 Cotizador</a>
-    <a href="#modulos-section" onclick="cerrarMenuMobile()" class="text-slate-600 hover:text-slate-900 text-sm font-semibold transition">⚙️ Ecosistema</a>
-    <a href="#precios-section" onclick="cerrarMenuMobile()" class="text-slate-600 hover:text-slate-900 text-sm font-semibold transition">💰 Precios</a>
-    
-    <!-- Enlace destacado App VerifiOS -->
-    <a href="index2.html" onclick="toggleMenu()" class="text-[var(--primary-blue)] font-bold text-sm flex items-center gap-1.5 hover:opacity-80 transition">
-        <i class="fa-solid fa-mobile-screen-button"></i> App VerifiOS
-    </a>
-
-    <a href="#faq-section" onclick="cerrarMenuMobile()" class="text-slate-600 hover:text-slate-900 text-sm font-semibold transition">❓ FAQ</a>
+    <div id="navLinks" style="display: flex; gap: 1.5rem; align-items: center;">
+        <a href="#cotizador-section" onclick="cerrarMenuMobile()" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600;">🧮 Cotizador</a>
+        <a href="#modulos-section" onclick="cerrarMenuMobile()" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600;">⚙️ Ecosistema</a>
+        <a href="#precios-section" onclick="cerrarMenuMobile()" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600;">💰 Precios</a>
+        <a href="index2.html" onclick="cerrarMenuMobile()" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 700;"> 📱 App VerifiOS</a>
+        <a href="#faq-section" onclick="cerrarMenuMobile()" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600;">❓ FAQ</a>
         
-    <!-- Botón de WhatsApp -->
-    <a href="https://wa.me/593992661432?text=Hola,%20vengo%20de%20la%20web%20de%20VerifiOS%20y%20quiero%20información" target="_blank" onclick="cerrarMenuMobile()" class="bg-[var(--accent)] hover:opacity-90 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-sm">
-        WhatsApp 📲
-    </a>
-</div>
+        <a href="https://wa.me/593992661432?text=Hola,%20vengo%20de%20la%20web%20de%20VerifiOS%20y%20quiero%20información" target="_blank" onclick="cerrarMenuMobile()" style="background: var(--accent); color: #fff; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; text-decoration: none; font-weight: 700;">
+            WhatsApp 💬
+        </a>
+    </div>
+</nav>
 
 <!-- Espaciador -->
 <div style="height: 70px;"></div>
