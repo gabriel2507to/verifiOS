@@ -35,15 +35,10 @@ self.addEventListener('activate', (e) => {
 
 // 3. Interceptar peticiones (Estrategia: Network First / Red primero)
 self.addEventListener('fetch', (e) => {
-  // 🛑 EVITAR ERROR: Ignorar peticiones que NO sean GET (como POST de Firebase) o URLs externas de APIs
-  if (e.request.method !== 'GET' || !e.request.url.startsWith(self.location.origin)) {
-    return;
-  }
-
   e.respondWith(
     fetch(e.request)
       .then((networkResponse) => {
-        // Si hay internet, descargamos lo nuevo y actualizamos el caché
+        // Si hay internet, descargamos lo nuevo y opcionalmente actualizamos el caché
         return caches.open(CACHE_NAME).then((cache) => {
           cache.put(e.request, networkResponse.clone());
           return networkResponse;
