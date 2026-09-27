@@ -231,20 +231,24 @@
         ☰
     </button>
 
-    <!-- Enlaces de navegación -->
-    <div id="navLinks" style="display: flex; gap: 1.5rem; align-items: center;">
-        <a href="#cotizador-section" onclick="cerrarMenuMobile()" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600;">🧮 Cotizador</a>
-        <a href="#modulos-section" onclick="cerrarMenuMobile()" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600;">⚙️ Ecosistema</a>
-        <a href="#precios-section" onclick="cerrarMenuMobile()" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600;">💰 Precios</a>
-        <li><a href="index2.html" onclick="toggleMenu()" class="text-[var(--primary-blue)] font-bold flex items-center gap-1">
+  <!-- Enlaces de navegación -->
+<div id="navLinks" class="flex items-center gap-6">
+    <a href="#cotizador-section" onclick="cerrarMenuMobile()" class="text-slate-600 hover:text-slate-900 text-sm font-semibold transition">🧮 Cotizador</a>
+    <a href="#modulos-section" onclick="cerrarMenuMobile()" class="text-slate-600 hover:text-slate-900 text-sm font-semibold transition">⚙️ Ecosistema</a>
+    <a href="#precios-section" onclick="cerrarMenuMobile()" class="text-slate-600 hover:text-slate-900 text-sm font-semibold transition">💰 Precios</a>
+    
+    <!-- Enlace destacado App VerifiOS -->
+    <a href="index2.html" onclick="toggleMenu()" class="text-[var(--primary-blue)] font-bold text-sm flex items-center gap-1.5 hover:opacity-80 transition">
         <i class="fa-solid fa-mobile-screen-button"></i> App VerifiOS
-        <a href="#faq-section" onclick="cerrarMenuMobile()" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600;">❓ FAQ</a>
+    </a>
+
+    <a href="#faq-section" onclick="cerrarMenuMobile()" class="text-slate-600 hover:text-slate-900 text-sm font-semibold transition">❓ FAQ</a>
         
-        <a href="https://wa.me/593992661432?text=Hola,%20vengo%20de%20la%20web%20de%20VerifiOS%20y%20quiero%20información" target="_blank" onclick="cerrarMenuMobile()" style="background: var(--accent); color: #fff; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; text-decoration: none; font-weight: 700;">
-            WhatsApp 📲
-        </a>
-    </div>
-</nav>
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/593992661432?text=Hola,%20vengo%20de%20la%20web%20de%20VerifiOS%20y%20quiero%20información" target="_blank" onclick="cerrarMenuMobile()" class="bg-[var(--accent)] hover:opacity-90 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-sm">
+        WhatsApp 📲
+    </a>
+</div>
 
 <!-- Espaciador -->
 <div style="height: 70px;"></div>
@@ -408,7 +412,7 @@
         
         <ul style="color: var(--text-muted); font-size: 0.85rem; display: flex; flex-direction: column; gap: 0.8rem; padding-left: 20px; line-height: 1.5; margin-top: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.25rem;">
             <li style="text-align: justify;">
-                <strong style="color: #fff;">🤝 Metodología de Pago y Confianza (50/50):</strong> Cero pagos a ciegas. Primero te mostramos el producto funcionando o una demo adaptada a tu negocio. Si te convence y lo quieres a tu medida, arrancas con el <span style="color: #fff;">50% de anticipo</span> y el <span style="color: #fff;">50% restante lopagas únicamente al entregar</span> y dejar operativo el sistema.
+                <strong style="color: #fff;">🤝 Metodología de Pago y Confianza (50/50):</strong> Cero pagos a ciegas. Primero te mostramos el producto funcionando o una demo adaptada a tu negocio. Si te convence y lo quieres a tu medida, arrancas con el <span style="color: #fff;">50% de anticipo</span> y el <span style="color: #fff;">50% restante lo pagas únicamente al entregar</span> y dejar operativo el sistema.
             </li>
             <li style="text-align: justify;">
                 <strong style="color: #fff;">🌐 Dominio y Hosting:</strong> El precio base incluye la asesoría y configuración inicial completa. Sin embargo, el registro oficial del dominio y su <span style="color: #fff;">renovación anual</span> quedan a nombre y absoluta responsabilidad del cliente.
