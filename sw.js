@@ -13,7 +13,7 @@ self.addEventListener('install', (e) => {
       return cache.addAll(ASSETS);
     })
   );
-  self.skipWaiting(); // Fuerza a que el nuevo Service Worker se active de inmediato
+  self.skipWaiting();
 });
 
 // 2. Activación: Limpia las cachés viejas si cambias de versión
@@ -35,17 +35,20 @@ self.addEventListener('activate', (e) => {
 
 // 3. Interceptar peticiones (Estrategia: Network First / Red primero)
 self.addEventListener('fetch', (e) => {
+ 
+  if (e.request.method !== 'GET') {
+    return;
+  }
+
   e.respondWith(
     fetch(e.request)
       .then((networkResponse) => {
-        // Si hay internet, descargamos lo nuevo y opcionalmente actualizamos el caché
         return caches.open(CACHE_NAME).then((cache) => {
           cache.put(e.request, networkResponse.clone());
           return networkResponse;
         });
       })
       .catch(() => {
-        // Si NO hay internet, rescatamos la versión guardada en el caché
         return caches.match(e.request);
       })
   );
